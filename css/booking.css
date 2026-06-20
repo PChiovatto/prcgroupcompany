@@ -1,0 +1,88 @@
+/* ===========================================================
+   PRC Group — Booking / scheduling system
+   Loaded in addition to styles.css
+   =========================================================== */
+
+.book-hero {
+  background: linear-gradient(120deg, var(--navy-deep), var(--navy-soft));
+  color: #fff; padding: 3.5rem 0; text-align: center;
+}
+.book-hero h1 { color: #fff; font-size: clamp(1.8rem, 4vw, 2.6rem); }
+.book-hero p { color: #d7e2ee; margin-top: .6rem; max-width: 620px; margin-inline: auto; }
+
+.booking { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.8rem; align-items: start;
+  max-width: 980px; margin: 0 auto; }
+
+/* ----- Calendar ----- */
+.cal { background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow-md); padding: 1.5rem; }
+.cal__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.cal__title { font-family: var(--font-head); font-weight: 800; color: var(--navy); font-size: 1.15rem; }
+.cal__nav { display: flex; gap: .5rem; }
+.cal__nav button { width: 38px; height: 38px; border: 1px solid var(--line); background: var(--bg-alt);
+  border-radius: 10px; cursor: pointer; font-size: 1.1rem; color: var(--navy); transition: .2s; }
+.cal__nav button:hover:not(:disabled) { background: var(--amber); color: #fff; border-color: var(--amber); }
+.cal__nav button:disabled { opacity: .35; cursor: not-allowed; }
+.cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.cal__dow { text-align: center; font-size: .72rem; font-weight: 700; font-family: var(--font-head);
+  text-transform: uppercase; color: var(--muted); padding-bottom: .4rem; letter-spacing: .04em; }
+.cal__day { aspect-ratio: 1; border: 1px solid transparent; border-radius: 10px; background: var(--bg-alt);
+  display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: .92rem;
+  cursor: pointer; transition: .15s; color: var(--ink); }
+.cal__day:hover:not(.is-off) { border-color: var(--amber); transform: translateY(-2px); }
+.cal__day.is-empty { background: transparent; cursor: default; }
+.cal__day.is-off { background: #f3f4f6; color: #c2c8d0; cursor: not-allowed; text-decoration: line-through; }
+.cal__day.is-today { box-shadow: inset 0 0 0 2px var(--amber); }
+.cal__day.sel { background: var(--navy); color: #fff; border-color: var(--navy); }
+.cal__legend { display: flex; gap: 1.2rem; margin-top: 1rem; font-size: .78rem; color: var(--muted); }
+.cal__legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.cal__legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* ----- Slots + form panel ----- */
+.bpanel { background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow-md); padding: 1.5rem; }
+.bpanel h3 { font-size: 1.1rem; margin-bottom: .2rem; }
+.bpanel .sub { color: var(--muted); font-size: .88rem; margin-bottom: 1.1rem; }
+.bsel { background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: .7rem 1rem; font-size: .9rem; margin-bottom: 1.1rem; display: flex; align-items: center; gap: .5rem; }
+.bsel strong { color: var(--navy); font-family: var(--font-head); }
+.bsel.empty { color: var(--muted); }
+
+.slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: .55rem; margin-bottom: 1.2rem; }
+.slot { border: 1px solid var(--line); background: #fcfdff; border-radius: 10px; padding: .6rem .2rem;
+  text-align: center; font-weight: 600; font-size: .9rem; cursor: pointer; transition: .15s; font-family: var(--font-head); }
+.slot:hover { border-color: var(--amber); }
+.slot.sel { background: var(--amber); color: #2a1c00; border-color: var(--amber); }
+.slots-hint { color: var(--muted); font-size: .85rem; padding: .5rem 0 1rem; }
+
+.bform .field { margin-bottom: .9rem; }
+.bform label { display: block; font-family: var(--font-head); font-weight: 600; font-size: .82rem;
+  margin-bottom: .35rem; color: var(--navy); }
+.bform input, .bform select, .bform textarea { width: 100%; padding: .75rem .9rem; border: 1px solid var(--line);
+  border-radius: var(--radius-sm); font-family: var(--font-body); font-size: .92rem; background: #fcfdff; }
+.bform input:focus, .bform select:focus, .bform textarea:focus { outline: none; border-color: var(--amber);
+  box-shadow: 0 0 0 3px rgba(245,166,35,.18); }
+.brow { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.bnote { font-size: .78rem; color: var(--muted); margin-top: .8rem; text-align: center; }
+.bnote--err { color: #c0392b; font-weight: 600; }
+
+/* ----- Success ----- */
+.booked { text-align: center; padding: 1rem 0; }
+.booked__check { width: 72px; height: 72px; margin: 0 auto 1rem; border-radius: 50%; background: #e8f7ee;
+  color: #1a8f4a; display: grid; place-items: center; font-size: 2.2rem; }
+.booked h3 { font-size: 1.5rem; margin-bottom: .4rem; }
+.booked p { color: var(--muted); }
+.booked__card { background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 1.2rem; margin: 1.4rem auto; max-width: 380px; text-align: left; display: grid; gap: .5rem; }
+.booked__card div { display: flex; justify-content: space-between; font-size: .92rem; }
+.booked__card span:first-child { color: var(--muted); }
+.booked__card span:last-child { font-weight: 600; color: var(--navy); }
+.is-hidden { display: none !important; }
+
+@media (max-width: 820px) {
+  .booking { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .brow { grid-template-columns: 1fr; }
+  .slots { grid-template-columns: repeat(2, 1fr); }
+}

@@ -14,12 +14,31 @@ in Massachusetts.
 ```
 .
 ├── index.html        # Single-page site (hero, services, about, process, projects, reviews, contact)
-├── css/styles.css    # All styles (responsive, mobile-first breakpoints)
-├── js/main.js        # Nav toggle, scroll header, form handling
+├── tools.html        # Interactive tools: quote calculator, color visualizer, before/after
+├── booking.html      # Calendar + appointment scheduling with email dispatch
+├── css/styles.css    # Core styles (responsive, mobile-first breakpoints)
+├── css/tools.css     # Styles for the tools page
+├── css/booking.css   # Styles for the booking page
+├── js/main.js        # Nav toggle, scroll header, contact form
+├── js/tools.js       # Quote calculator + color visualizer + before/after logic
+├── js/booking.js     # Calendar, time slots, email dispatch (Web3Forms)
+├── assets/           # logo.svg, favicon.svg
 ├── robots.txt
 ├── sitemap.xml
 └── netlify.toml      # Netlify config + security headers
 ```
+
+## Booking emails (Web3Forms — free, no backend)
+
+The booking page (`booking.html`) sends appointment requests by email with **no server**.
+
+1. Go to https://web3forms.com, enter your business email, and copy your **Access Key**.
+2. Open `js/booking.js` and set `WEB3FORMS_ACCESS_KEY` to that key.
+3. (Optional) In the Web3Forms dashboard, enable the **Autoresponder** so customers
+   also get a confirmation email automatically.
+
+Until a real key is set, the booking page runs in **demo mode** (shows the success
+screen but does not send an email).
 
 ## Run locally
 
