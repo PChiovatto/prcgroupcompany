@@ -55,8 +55,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap"
     rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -79,9 +80,13 @@
   <!-- ===== HEADER / NAV ===== -->
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="#home" class="brand">
-        <span class="brand__mark">PRC</span>
-        <span class="brand__text">Group<small>Painting · Carpentry · Remodeling</small></span>
+      <a href="#home" class="brand" aria-label="PRC Group — home">
+        <svg class="logo" viewBox="0 0 168 120" role="img" aria-label="PRC Group logo">
+          <path class="logo__blob" d="M60 4 C28 4 3 28 3 60 C3 92 28 116 60 116 C80 116 92 109 97 99 C99 95 100 88 100 80 L100 30 C100 19 97 11 90 7 C85 4 78 3 69 3 Z"/>
+          <text class="logo__prc" x="51" y="75" text-anchor="middle">PRC</text>
+          <text class="logo__group" transform="translate(124 113) rotate(-90)">GROUP</text>
+        </svg>
+        <span class="brand__tag">Painting · Carpentry · Remodeling</span>
       </a>
 
       <nav class="nav" id="nav">
@@ -372,8 +377,11 @@
     <div class="container footer__grid">
       <div class="footer__brand">
         <span class="brand brand--footer">
-          <span class="brand__mark">PRC</span>
-          <span class="brand__text">Group</span>
+          <svg class="logo logo--footer" viewBox="0 0 168 120" role="img" aria-label="PRC Group logo">
+            <path class="logo__blob" d="M60 4 C28 4 3 28 3 60 C3 92 28 116 60 116 C80 116 92 109 97 99 C99 95 100 88 100 80 L100 30 C100 19 97 11 90 7 C85 4 78 3 69 3 Z"/>
+            <text class="logo__prc" x="51" y="75" text-anchor="middle">PRC</text>
+            <text class="logo__group" transform="translate(124 113) rotate(-90)">GROUP</text>
+          </svg>
         </span>
         <p>Professional painting, carpentry and home remodeling across Massachusetts.
           Licensed, insured and committed to quality.</p>

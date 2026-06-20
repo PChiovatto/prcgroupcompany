@@ -84,16 +84,31 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; color: var(--
 .header.scrolled { box-shadow: var(--shadow-sm); }
 .header__inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
 
-.brand { display: flex; align-items: center; gap: .6rem; }
-.brand__mark {
-  font-family: var(--font-head); font-weight: 800; font-size: 1.05rem;
-  color: #fff; background: var(--navy); letter-spacing: .5px;
-  padding: .35rem .55rem; border-radius: 8px;
-  border-bottom: 3px solid var(--amber);
+.brand { display: flex; align-items: center; gap: .7rem; }
+
+/* SVG logo (recreated from brand mark) */
+.logo { height: 48px; width: auto; display: block; }
+.logo__blob { fill: var(--logo-blob, #2b2b2b); }
+.logo__prc {
+  fill: var(--logo-prc, #ffffff);
+  font-family: "Quicksand", var(--font-head); font-weight: 700;
+  font-size: 39px; letter-spacing: 1px;
 }
-.brand__text { font-family: var(--font-head); font-weight: 800; font-size: 1.25rem; color: var(--navy); line-height: 1; }
-.brand__text small { display: block; font-size: .62rem; font-weight: 500; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+.logo__group {
+  fill: var(--logo-group, #2b2b2b);
+  font-family: "Quicksand", var(--font-head); font-weight: 600;
+  font-size: 16px; letter-spacing: 4px;
+}
+.brand__tag {
+  font-family: var(--font-head); font-weight: 600; font-size: .64rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+  border-left: 2px solid var(--line); padding-left: .7rem; line-height: 1.3; max-width: 8.5rem;
+}
+/* Footer variant — inverted for the dark background */
+.logo--footer { height: 56px; }
+.footer .logo__blob { fill: #ffffff; }
+.footer .logo__prc { fill: var(--navy-deep); }
+.footer .logo__group { fill: #ffffff; }
 
 .nav { display: flex; align-items: center; gap: .35rem; }
 .nav a {
@@ -288,6 +303,8 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; color: var(--
   .nav-toggle { display: flex; }
   .topbar__left { display: none; }
   .topbar__inner { justify-content: center; }
+  .brand__tag { display: none; }
+  .logo { height: 42px; }
   .cards, .reviews, .gallery, .steps { grid-template-columns: 1fr; }
   .field-row { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; }

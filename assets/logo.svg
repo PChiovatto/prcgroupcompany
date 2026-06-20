@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 120" role="img" aria-label="PRC Group">
+  <path fill="#2b2b2b" d="M60 4 C28 4 3 28 3 60 C3 92 28 116 60 116 C80 116 92 109 97 99 C99 95 100 88 100 80 L100 30 C100 19 97 11 90 7 C85 4 78 3 69 3 Z"/>
+  <text x="51" y="75" text-anchor="middle" fill="#ffffff"
+        font-family="'Quicksand','Trebuchet MS',sans-serif" font-weight="700"
+        font-size="39" letter-spacing="1">PRC</text>
+  <text transform="translate(124 113) rotate(-90)" fill="#2b2b2b"
+        font-family="'Quicksand','Trebuchet MS',sans-serif" font-weight="600"
+        font-size="16" letter-spacing="4">GROUP</text>
+</svg>
