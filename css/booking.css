@@ -8,7 +8,7 @@
   color: #fff; padding: 3.5rem 0; text-align: center;
 }
 .book-hero h1 { color: #fff; font-size: clamp(1.8rem, 4vw, 2.6rem); }
-.book-hero p { color: #d7e2ee; margin-top: .6rem; max-width: 620px; margin-inline: auto; }
+.book-hero p { color: #d7d7d7; margin-top: .6rem; max-width: 620px; margin-inline: auto; }
 
 .booking { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.8rem; align-items: start;
   max-width: 980px; margin: 0 auto; }
@@ -52,7 +52,7 @@
 .slot { border: 1px solid var(--line); background: #fcfdff; border-radius: 10px; padding: .6rem .2rem;
   text-align: center; font-weight: 600; font-size: .9rem; cursor: pointer; transition: .15s; font-family: var(--font-head); }
 .slot:hover { border-color: var(--amber); }
-.slot.sel { background: var(--amber); color: #2a1c00; border-color: var(--amber); }
+.slot.sel { background: var(--amber); color: #fff; border-color: var(--amber); }
 .slots-hint { color: var(--muted); font-size: .85rem; padding: .5rem 0 1rem; }
 
 .bform .field { margin-bottom: .9rem; }
@@ -61,7 +61,7 @@
 .bform input, .bform select, .bform textarea { width: 100%; padding: .75rem .9rem; border: 1px solid var(--line);
   border-radius: var(--radius-sm); font-family: var(--font-body); font-size: .92rem; background: #fcfdff; }
 .bform input:focus, .bform select:focus, .bform textarea:focus { outline: none; border-color: var(--amber);
-  box-shadow: 0 0 0 3px rgba(245,166,35,.18); }
+  box-shadow: 0 0 0 3px rgba(0,0,0,.18); }
 .brow { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
 .bnote { font-size: .78rem; color: var(--muted); margin-top: .8rem; text-align: center; }
 .bnote--err { color: #c0392b; font-weight: 600; }

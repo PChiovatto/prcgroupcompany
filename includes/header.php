@@ -16,7 +16,7 @@ function nav_active($k, $cur) { return $k === $cur ? ' aria-current="page"' : ''
   <meta name="description" content="<?= htmlspecialchars($pageDesc) ?>" />
   <link rel="canonical" href="<?= htmlspecialchars($canonical) ?>" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#0f2a43" />
+  <meta name="theme-color" content="#111111" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="<?= htmlspecialchars($pageTitle) ?>" />
