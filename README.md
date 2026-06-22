@@ -1,68 +1,78 @@
 # PRC Group — Company Website
 
-Static marketing website for **PRC Group** — painting, carpentry and home remodeling
-in Massachusetts.
+Website for **PRC Group** — painting, carpentry and home remodeling in Massachusetts.
 
 ## Stack
 
-- Plain **HTML + CSS + JS** (no build step, no dependencies)
-- Hosted as a static site (Netlify / Cloudflare Pages / GitHub Pages)
-- Contact form via **Netlify Forms** (zero backend) — submissions land in the Netlify dashboard / email
+- **PHP** (no framework) with shared `includes/` for header/footer
+- Plain **CSS + vanilla JS** front-end (no build step, no dependencies)
+- Server-side email via PHP `mail()` — contact, instant-quote and booking forms
+- Runs on any standard PHP hosting (Apache/Nginx + PHP 7.4+)
 
 ## Structure
 
 ```
 .
-├── index.html        # Single-page site (hero, services, about, process, projects, reviews, contact)
-├── tools.html        # Interactive tools: quote calculator, color visualizer, before/after
-├── booking.html      # Calendar + appointment scheduling with email dispatch
-├── css/styles.css    # Core styles (responsive, mobile-first breakpoints)
-├── css/tools.css     # Styles for the tools page
-├── css/booking.css   # Styles for the booking page
-├── js/main.js        # Nav toggle, scroll header, contact form
-├── js/tools.js       # Quote calculator + color visualizer + before/after logic
-├── js/booking.js     # Calendar, time slots, email dispatch (Web3Forms)
-├── assets/           # logo.svg, favicon.svg
+├── index.php           # Home (hero, services, about, process, projects, reviews, contact)
+├── tools.php           # Interactive tools: quote calculator, color visualizer, before/after
+├── booking.php         # Calendar + appointment scheduling
+├── includes/
+│   ├── config.php      # ALL business details (phone, email, name) — edit here
+│   ├── header.php      # Shared <head>, top bar, nav (+ LocalBusiness schema)
+│   ├── footer.php      # Shared footer + script loading
+│   ├── mailer.php      # send_mail() helper (PHP mail)
+│   └── .htaccess       # Blocks direct web access to includes
+├── api/
+│   └── send.php        # Form handler for contact / quote / booking → email (JSON)
+├── css/                # styles.css (core), tools.css, booking.css
+├── js/                 # site.js (shared), main.js, tools.js, booking.js
+├── assets/             # logo.svg, favicon.svg
+├── .htaccess           # Default doc + security headers
 ├── robots.txt
-├── sitemap.xml
-└── netlify.toml      # Netlify config + security headers
+└── sitemap.xml
 ```
 
-## Booking emails (Web3Forms — free, no backend)
+## Configure (one place)
 
-The booking page (`booking.html`) sends appointment requests by email with **no server**.
+Open `includes/config.php` and set the real business details:
 
-1. Go to https://web3forms.com, enter your business email, and copy your **Access Key**.
-2. Open `js/booking.js` and set `WEB3FORMS_ACCESS_KEY` to that key.
-3. (Optional) In the Web3Forms dashboard, enable the **Autoresponder** so customers
-   also get a confirmation email automatically.
+```php
+define('BUSINESS_EMAIL', 'info@prcgroupcompany.com');  // where leads are emailed
+define('FROM_EMAIL',     'no-reply@prcgroupcompany.com');
+define('BUSINESS_PHONE',     '(000) 000-0000');
+define('BUSINESS_PHONE_RAW', '+10000000000');
+```
 
-Until a real key is set, the booking page runs in **demo mode** (shows the success
-screen but does not send an email).
+Phone, email and area name flow from here into every page automatically.
 
 ## Run locally
 
-Just open `index.html` in a browser, or serve the folder:
+Requires PHP installed:
 
 ```bash
-# Python
-python -m http.server 8080
-# then visit http://localhost:8080
+php -S localhost:8000
+# then visit http://localhost:8000
 ```
 
-## TODO before going live (placeholders to replace)
+> Note: `mail()` usually does nothing on a local machine without a mail server,
+> so forms will report an error locally. They work once deployed to PHP hosting.
 
-- [ ] **Phone:** `(000) 000-0000` → real number (in `index.html`, search `0000000000` and `(000) 000-0000`)
-- [ ] **Email:** confirm `info@prcgroupcompany.com`
-- [ ] **Service area / city:** currently "Massachusetts"
-- [ ] **Project photos:** replace the placeholder gallery tiles with real images
-- [ ] **Reviews:** swap sample testimonials for real ones
-- [ ] **Logo / OG image:** add `assets/og-image.jpg` and a favicon
-- [ ] **Social links:** add Facebook / Instagram if applicable
+## Email delivery
 
-## Deploy (Netlify, recommended)
+Forms post to `api/send.php`, which sends mail server-side via PHP `mail()`.
+For best deliverability (avoid spam), use a `FROM_EMAIL` on your own domain.
+If your host blocks `mail()` or messages land in spam, swap the body of
+`send_mail()` in `includes/mailer.php` for PHPMailer + SMTP — nothing else changes.
 
-1. Connect this GitHub repo in Netlify.
-2. Build command: _none_. Publish directory: `.`
-3. Add the custom domain `prcgroupcompany.com`.
-4. Form submissions appear under **Forms** in the Netlify dashboard.
+## Deploy
+
+Upload all files to your PHP host's web root (e.g. `public_html`) via FTP/SFTP
+or Git. Ensure PHP 7.4+ is enabled. No build step required.
+
+## TODO before going live
+
+- [ ] Set real phone / email in `includes/config.php`
+- [ ] Confirm `mail()` works on the host (send a test through the contact form)
+- [ ] Replace placeholder project photos in the gallery (index + tools)
+- [ ] Replace sample testimonials with real reviews
+- [ ] Add a real logo file / OG image if desired

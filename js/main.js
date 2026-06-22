@@ -1,66 +1,44 @@
-/* PRC Group — site interactions */
+/* PRC Group — home page: contact form via api/send.php */
 (function () {
   "use strict";
 
-  // Mobile nav toggle
-  var toggle = document.getElementById("navToggle");
-  var nav = document.getElementById("nav");
-  if (toggle && nav) {
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("open");
-      toggle.classList.toggle("open", open);
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-    nav.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        nav.classList.remove("open");
-        toggle.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
-
-  // Header shadow on scroll
-  var header = document.getElementById("header");
-  if (header) {
-    var onScroll = function () {
-      header.classList.toggle("scrolled", window.scrollY > 10);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-  }
-
-  // Current year in footer
-  var yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // Contact form: basic validation + graceful note.
-  // On Netlify the POST is handled automatically; elsewhere we just confirm.
   var form = document.getElementById("quoteForm");
   var note = document.getElementById("formNote");
-  if (form && note) {
-    form.addEventListener("submit", function (e) {
-      var name = form.querySelector("#name");
-      var phone = form.querySelector("#phone");
-      var valid = name.value.trim() !== "" && phone.value.trim() !== "";
+  if (!form || !note) return;
 
-      if (!valid) {
-        e.preventDefault();
-        note.hidden = false;
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    note.hidden = false;
+
+    var name = form.querySelector("#name").value.trim();
+    var phone = form.querySelector("#phone").value.trim();
+    if (!name || !phone) {
+      note.className = "form-note err";
+      note.textContent = "Please enter at least your name and phone number.";
+      return;
+    }
+
+    var btn = form.querySelector("button[type=submit]");
+    btn.disabled = true; btn.textContent = "Sending…";
+    note.className = "form-note";
+    note.textContent = "Sending…";
+
+    fetch("api/send.php", { method: "POST", body: new FormData(form) })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data && data.success) {
+          note.className = "form-note ok";
+          note.textContent = "Thanks! Your request has been sent — we'll be in touch shortly.";
+          form.reset();
+        } else {
+          note.className = "form-note err";
+          note.textContent = (data && data.message) || "Something went wrong. Please call us.";
+        }
+      })
+      .catch(function () {
         note.className = "form-note err";
-        note.textContent = "Please enter at least your name and phone number.";
-        return;
-      }
-
-      // If running locally / not on Netlify, prevent navigation and show confirmation.
-      var isNetlify = /netlify|prcgroupcompany\.com/i.test(location.host);
-      if (!isNetlify) {
-        e.preventDefault();
-        note.hidden = false;
-        note.className = "form-note ok";
-        note.textContent = "Thanks! Your request looks good. (Live form delivery activates once the site is hosted.)";
-        form.reset();
-      }
-    });
-  }
+        note.textContent = "Network error. Please call us or try again.";
+      })
+      .finally(function () { btn.disabled = false; btn.textContent = "Send Request"; });
+  });
 })();

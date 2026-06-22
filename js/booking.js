@@ -1,34 +1,8 @@
-/* PRC Group — booking / scheduling system
-   ----------------------------------------------------------
-   EMAIL SETUP (free, no backend) via Web3Forms:
-   1) Go to https://web3forms.com → enter your email → get an Access Key.
-   2) Paste it below as WEB3FORMS_ACCESS_KEY.
-   3) (Optional) In the Web3Forms dashboard enable the Autoresponder so the
-      customer also receives a confirmation email.
-   Until a real key is set, the page runs in DEMO mode (no email sent).
-   ---------------------------------------------------------- */
+/* PRC Group — booking / scheduling system.
+   Emails are sent server-side by api/send.php (form=booking).
+   Shared nav/year behavior lives in site.js. */
 (function () {
   "use strict";
-
-  var WEB3FORMS_ACCESS_KEY = "YOUR-ACCESS-KEY-HERE";
-  var BUSINESS_NAME = "PRC Group";
-
-  /* ---------- shared nav/year ---------- */
-  var toggle = document.getElementById("navToggle");
-  var nav = document.getElementById("nav");
-  if (toggle && nav) {
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("open");
-      toggle.classList.toggle("open", open);
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-  }
-  var header = document.getElementById("header");
-  if (header) window.addEventListener("scroll", function () {
-    header.classList.toggle("scrolled", window.scrollY > 10);
-  }, { passive: true });
-  var yr = document.getElementById("year");
-  if (yr) yr.textContent = new Date().getFullYear();
 
   /* ---------- calendar ---------- */
   var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -158,37 +132,28 @@
       notes: document.getElementById("bnotes").value.trim()
     };
 
-    var done = function () { renderSuccess(details); };
-    var fail = function () {
+    var fail = function (msg) {
       submitBtn.disabled = false; submitBtn.textContent = "Confirm booking";
-      showError("Sorry, something went wrong sending your request. Please call us at (000) 000-0000.");
+      showError(msg || "Sorry, something went wrong sending your request. Please call us.");
     };
 
-    if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === "YOUR-ACCESS-KEY-HERE") {
-      // DEMO mode — no key configured yet
-      setTimeout(done, 600);
-      return;
-    }
+    var fd = new FormData();
+    fd.append("form", "booking");
+    fd.append("date", details.date);
+    fd.append("time", details.time);
+    fd.append("service", details.service);
+    fd.append("name", name);
+    fd.append("phone", phone);
+    fd.append("email", email);
+    fd.append("message", details.notes);
 
-    var payload = {
-      access_key: WEB3FORMS_ACCESS_KEY,
-      subject: "New booking — " + details.date + " at " + details.time,
-      from_name: BUSINESS_NAME + " Website",
-      replyto: email,
-      "Appointment date": details.date,
-      "Appointment time": details.time,
-      "Service": details.service,
-      "Name": name, "Phone": phone, "Email": email,
-      "Notes": details.notes || "—"
-    };
-
-    fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify(payload)
-    }).then(function (r) { return r.json(); })
-      .then(function (data) { if (data && data.success) done(); else fail(); })
-      .catch(fail);
+    fetch("api/send.php", { method: "POST", body: fd })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data && data.success) renderSuccess(details);
+        else fail(data && data.message);
+      })
+      .catch(function () { fail(); });
   });
 
   function renderSuccess(d) {

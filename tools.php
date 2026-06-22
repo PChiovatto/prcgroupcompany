@@ -1,68 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instant Quote &amp; Project Tools | PRC Group</title>
-  <meta name="description"
-    content="Get an instant painting, carpentry or remodeling estimate, preview paint colors and compare before/after results — PRC Group interactive project tools." />
-  <link rel="canonical" href="https://www.prcgroupcompany.com/tools.html" />
-  <meta name="theme-color" content="#0f2a43" />
+<?php
+require_once __DIR__ . '/includes/config.php';
+$pageTitle = 'Instant Quote & Project Tools | ' . BUSINESS_NAME;
+$pageDesc  = 'Get an instant painting, carpentry or remodeling estimate, preview paint colors and compare before/after results — ' . BUSINESS_NAME . ' interactive project tools.';
+$canonical = SITE_URL . '/tools.php';
+$active    = 'tools';
+$extraCSS  = ['css/tools.css'];
+$extraJS   = ['js/tools.js'];
+include __DIR__ . '/includes/header.php';
+?>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap"
-    rel="stylesheet" />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/tools.css" />
-</head>
-<body>
-
-  <!-- ===== TOP BAR ===== -->
-  <div class="topbar">
-    <div class="container topbar__inner">
-      <div class="topbar__left">
-        <span>📍 Serving all of Massachusetts</span>
-        <span class="topbar__sep">•</span>
-        <span>🕐 Mon–Sat, 8AM–6PM</span>
-      </div>
-      <div class="topbar__right">
-        <a href="tel:+10000000000" class="topbar__phone">📞 (000) 000-0000</a>
-        <a href="#calc" class="topbar__cta">Free Estimate</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== HEADER / NAV ===== -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="index.html" class="brand" aria-label="PRC Group — home">
-        <svg class="logo" viewBox="0 0 168 120" role="img" aria-label="PRC Group logo">
-          <path class="logo__blob" d="M60 4 C28 4 3 28 3 60 C3 92 28 116 60 116 C80 116 92 109 97 99 C99 95 100 88 100 80 L100 30 C100 19 97 11 90 7 C85 4 78 3 69 3 Z"/>
-          <text class="logo__prc" x="51" y="75" text-anchor="middle">PRC</text>
-          <text class="logo__group" transform="translate(124 113) rotate(-90)">GROUP</text>
-        </svg>
-        <span class="brand__tag">Painting · Carpentry · Remodeling</span>
-      </a>
-
-      <nav class="nav" id="nav">
-        <a href="index.html#services">Services</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="tools.html">Tools</a>
-        <a href="booking.html">Book</a>
-        <a href="#calc" class="nav__cta">Get a Quote</a>
-      </nav>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- ===== HERO ===== -->
   <section class="tools-hero">
     <div class="container">
       <h1>Project Tools</h1>
@@ -76,29 +22,23 @@
     <div class="container">
       <div class="section__head">
         <span class="section__eyebrow">Instant Estimate</span>
-        <h2 id="calc-anchor">Quote Calculator</h2>
+        <h2>Quote Calculator</h2>
         <p>Answer a few quick questions for an instant price range. No obligation.</p>
       </div>
 
       <div class="calc" id="calc">
         <div class="calc__bar">
-          <div class="active">Service</div>
-          <div>Details</div>
-          <div>Finish</div>
-          <div>Contact</div>
-          <div>Estimate</div>
+          <div class="active">Service</div><div>Details</div><div>Finish</div><div>Contact</div><div>Estimate</div>
         </div>
 
-        <form id="quoteForm" name="quote-detailed" method="POST" data-netlify="true"
-              netlify-honeypot="bot-field" class="calc__body" action="#calc">
-          <input type="hidden" name="form-name" value="quote-detailed" />
-          <p class="hidden-field"><label>Skip: <input name="bot-field" /></label></p>
+        <form id="quoteForm" class="calc__body" novalidate>
+          <input type="hidden" name="form" value="quote" />
+          <p class="hidden-field"><label>Skip: <input name="botcheck" tabindex="-1" autocomplete="off" /></label></p>
           <input type="hidden" id="f_service" name="service" />
           <input type="hidden" id="f_project" name="project" />
           <input type="hidden" id="f_finish" name="finish" />
           <input type="hidden" id="f_estimate" name="estimate" />
 
-          <!-- Step 0: Service -->
           <div class="calc__step active">
             <h3>What do you need done?</h3>
             <p class="hint">Pick the service that best fits your project.</p>
@@ -111,14 +51,12 @@
             </div>
           </div>
 
-          <!-- Step 1: Details (dynamic) -->
           <div class="calc__step">
             <h3>Tell us the size</h3>
             <p class="hint">This helps us ballpark the scope.</p>
             <div id="calcDetail"></div>
           </div>
 
-          <!-- Step 2: Finish level -->
           <div class="calc__step">
             <h3>Choose a finish level</h3>
             <p class="hint">Higher levels mean more prep and premium materials.</p>
@@ -132,7 +70,6 @@
             </div>
           </div>
 
-          <!-- Step 3: Contact -->
           <div class="calc__step">
             <h3>Where should we send it?</h3>
             <p class="hint">We'll email your estimate and follow up within one business day.</p>
@@ -143,7 +80,7 @@
             <div class="field-row">
               <div class="field">
                 <label for="cphone">Phone</label>
-                <input type="tel" id="cphone" name="phone" required placeholder="(000) 000-0000" />
+                <input type="tel" id="cphone" name="phone" required placeholder="<?= BUSINESS_PHONE ?>" />
               </div>
               <div class="field">
                 <label for="cemail">Email</label>
@@ -156,15 +93,15 @@
             </div>
           </div>
 
-          <!-- Step 4: Result -->
           <div class="calc__step">
             <div class="result">
               <span class="section__eyebrow">Your estimated range</span>
               <div class="result__range" id="resRange">—</div>
               <div class="result__sum" id="resSum"></div>
-              <p class="disclaimer">This is a rough, automated estimate based on typical Massachusetts
+              <p class="disclaimer">This is a rough, automated estimate based on typical <?= BUSINESS_AREA ?>
                 pricing — not a final quote. We'll confirm with a free on-site assessment. Press
                 <strong>Send request</strong> and we'll be in touch.</p>
+              <p class="form-note" id="quoteNote" hidden></p>
             </div>
           </div>
 
@@ -223,61 +160,14 @@
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
   <section class="cta-banner">
     <div class="container cta-banner__inner">
       <div>
         <h2>Prefer to talk it through?</h2>
         <p>Call us for a free, no-obligation on-site estimate.</p>
       </div>
-      <a href="tel:+10000000000" class="btn btn--light">📞 Call (000) 000-0000</a>
+      <a href="tel:<?= BUSINESS_PHONE_RAW ?>" class="btn btn--light">📞 Call <?= BUSINESS_PHONE ?></a>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container footer__grid">
-      <div class="footer__brand">
-        <span class="brand brand--footer">
-          <svg class="logo logo--footer" viewBox="0 0 168 120" role="img" aria-label="PRC Group logo">
-            <path class="logo__blob" d="M60 4 C28 4 3 28 3 60 C3 92 28 116 60 116 C80 116 92 109 97 99 C99 95 100 88 100 80 L100 30 C100 19 97 11 90 7 C85 4 78 3 69 3 Z"/>
-            <text class="logo__prc" x="51" y="75" text-anchor="middle">PRC</text>
-            <text class="logo__group" transform="translate(124 113) rotate(-90)">GROUP</text>
-          </svg>
-        </span>
-        <p>Professional painting, carpentry and home remodeling across Massachusetts.
-          Licensed, insured and committed to quality.</p>
-      </div>
-      <div class="footer__col">
-        <h4>Services</h4>
-        <a href="index.html#services">Interior Painting</a>
-        <a href="index.html#services">Exterior Painting</a>
-        <a href="index.html#services">General Carpentry</a>
-        <a href="index.html#services">Finish Carpentry</a>
-        <a href="index.html#services">Home Remodeling</a>
-      </div>
-      <div class="footer__col">
-        <h4>Tools</h4>
-        <a href="tools.html#calc-section">Quote Calculator</a>
-        <a href="tools.html#visualizer">Color Visualizer</a>
-        <a href="tools.html#beforeafter">Before &amp; After</a>
-        <a href="index.html#contact">Contact</a>
-      </div>
-      <div class="footer__col">
-        <h4>Contact</h4>
-        <a href="tel:+10000000000">(000) 000-0000</a>
-        <a href="mailto:info@prcgroupcompany.com">info@prcgroupcompany.com</a>
-        <span>Serving all of Massachusetts</span>
-        <span>Mon–Sat, 8AM–6PM</span>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="container">
-        <p>&copy; <span id="year"></span> PRC Group. All rights reserved. · Licensed &amp; Insured</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="js/tools.js"></script>
-</body>
-</html>
+<?php include __DIR__ . '/includes/footer.php'; ?>

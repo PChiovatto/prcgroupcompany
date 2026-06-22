@@ -1,25 +1,6 @@
-/* PRC Group — interactive tools */
+/* PRC Group — interactive tools (shared nav/year live in site.js) */
 (function () {
   "use strict";
-
-  /* ---------- Shared: mobile nav + year (mirrors main.js) ---------- */
-  var toggle = document.getElementById("navToggle");
-  var nav = document.getElementById("nav");
-  if (toggle && nav) {
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("open");
-      toggle.classList.toggle("open", open);
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-  }
-  var header = document.getElementById("header");
-  if (header) {
-    window.addEventListener("scroll", function () {
-      header.classList.toggle("scrolled", window.scrollY > 10);
-    }, { passive: true });
-  }
-  var y = document.getElementById("year");
-  if (y) y.textContent = new Date().getFullYear();
 
   /* =====================================================
      1) QUOTE CALCULATOR
@@ -169,8 +150,32 @@
       return true;
     }
 
+    function submitQuote() {
+      var form = calc.querySelector("#quoteForm");
+      var noteEl = calc.querySelector("#quoteNote");
+      nextBtn.disabled = true; nextBtn.textContent = "Sending…";
+      if (noteEl) { noteEl.hidden = false; noteEl.className = "form-note"; noteEl.textContent = "Sending…"; }
+
+      fetch("api/send.php", { method: "POST", body: new FormData(form) })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data && data.success) {
+            if (noteEl) { noteEl.className = "form-note ok"; noteEl.textContent = "Sent! We'll be in touch shortly with your detailed quote."; }
+            backBtn.classList.add("is-hidden");
+            nextBtn.classList.add("is-hidden");
+          } else {
+            nextBtn.disabled = false; nextBtn.textContent = "Send request";
+            if (noteEl) { noteEl.className = "form-note err"; noteEl.textContent = (data && data.message) || "Something went wrong. Please call us."; }
+          }
+        })
+        .catch(function () {
+          nextBtn.disabled = false; nextBtn.textContent = "Send request";
+          if (noteEl) { noteEl.className = "form-note err"; noteEl.textContent = "Network error. Please call us or try again."; }
+        });
+    }
+
     nextBtn.addEventListener("click", function () {
-      if (step === steps.length - 1) { calc.querySelector("#quoteForm").requestSubmit(); return; }
+      if (step === steps.length - 1) { submitQuote(); return; }
       if (!canAdvance()) { nextBtn.classList.add("shake"); setTimeout(function(){ nextBtn.classList.remove("shake"); }, 400); return; }
       step++; show();
     });
