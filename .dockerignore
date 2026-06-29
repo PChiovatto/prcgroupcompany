@@ -1,0 +1,8 @@
+.git
+.gitignore
+README.md
+run_local.bat
+.env
+.env.local
+*.log
+__wtest*.txt

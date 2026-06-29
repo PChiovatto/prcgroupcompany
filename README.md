@@ -57,22 +57,43 @@ php -S localhost:8000
 > Note: `mail()` usually does nothing on a local machine without a mail server,
 > so forms will report an error locally. They work once deployed to PHP hosting.
 
-## Email delivery
+## Email delivery (SMTP)
 
-Forms post to `api/send.php`, which sends mail server-side via PHP `mail()`.
-For best deliverability (avoid spam), use a `FROM_EMAIL` on your own domain.
-If your host blocks `mail()` or messages land in spam, swap the body of
-`send_mail()` in `includes/mailer.php` for PHPMailer + SMTP — nothing else changes.
+Forms post to `api/send.php` → `includes/mailer.php`. If `SMTP_HOST` is set it
+sends over **SMTP** (dependency-free client, supports STARTTLS/SSL + AUTH LOGIN);
+otherwise it falls back to PHP `mail()`.
 
-## Deploy
+Configure SMTP with environment variables (see `.env.example`). In Coolify:
+**Application → Environment Variables**. Never commit real credentials.
 
-Upload all files to your PHP host's web root (e.g. `public_html`) via FTP/SFTP
-or Git. Ensure PHP 7.4+ is enabled. No build step required.
+```
+LEAD_EMAIL   = info@prcgroupcompany.com   # where leads land
+SMTP_FROM    = no-reply@prcgroupcompany.com
+SMTP_HOST    = smtp.yourprovider.com
+SMTP_PORT    = 587                         # 587 = tls, 465 = ssl
+SMTP_SECURE  = tls
+SMTP_USER    = your-smtp-username
+SMTP_PASS    = your-smtp-password
+```
+
+Provider quick refs: Gmail (App Password), SendGrid (`SMTP_USER=apikey`),
+Mailgun. Examples are in `.env.example`.
+
+## Deploy (Docker / Coolify)
+
+The repo ships a `Dockerfile` (PHP 8.3 + Apache, `mod_rewrite`/`mod_headers`,
+`.htaccess` enabled).
+
+- **Coolify:** set the build pack to **Dockerfile**, add the SMTP env vars above,
+  exposed port **80**, then deploy. The repo must be reachable (public, or via a
+  GitHub App / deploy key for private).
+- **Traditional PHP hosting:** alternatively just upload all files to the web
+  root (`public_html`); PHP 7.4+. The Dockerfile is ignored in that case.
 
 ## TODO before going live
 
 - [ ] Set real phone / email in `includes/config.php`
-- [ ] Confirm `mail()` works on the host (send a test through the contact form)
+- [ ] Add SMTP env vars in Coolify and send a test through the contact form
 - [ ] Replace placeholder project photos in the gallery (index + tools)
 - [ ] Replace sample testimonials with real reviews
 - [ ] Add a real logo file / OG image if desired
