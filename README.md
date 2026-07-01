@@ -39,8 +39,8 @@ Open `includes/config.php` and set the real business details:
 ```php
 define('BUSINESS_EMAIL', 'info@prcgroupcompany.com');  // where leads are emailed
 define('FROM_EMAIL',     'no-reply@prcgroupcompany.com');
-define('BUSINESS_PHONE',     '(000) 000-0000');
-define('BUSINESS_PHONE_RAW', '+10000000000');
+define('BUSINESS_PHONE',     '(781) 520-8245');
+define('BUSINESS_PHONE_RAW', '+17815208245');
 ```
 
 Phone, email and area name flow from here into every page automatically.
