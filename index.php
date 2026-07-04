@@ -153,7 +153,12 @@ include __DIR__ . '/includes/header.php';
                width="1200" height="584" loading="lazy" />
           <span>Exterior &amp; Siding</span>
         </figure>
-        <figure class="gallery__item"><span>Custom Trim</span></figure>
+        <figure class="gallery__item">
+          <img src="assets/projects/custom-trim-wainscoting-carpentry-massachusetts.jpg"
+               alt="Custom vertical paneling with coat hook rail and crown molding — finish carpentry by PRC Group in Massachusetts"
+               width="900" height="1200" loading="lazy" />
+          <span>Custom Trim</span>
+        </figure>
         <figure class="gallery__item">
           <img src="assets/projects/bathroom-renovation-remodeling-massachusetts.jpg"
                alt="Renovated bathroom with white wainscoting, marble-top vanity and new flooring — remodeling by PRC Group in Massachusetts"
