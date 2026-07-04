@@ -145,7 +145,12 @@ include __DIR__ . '/includes/header.php';
         <p>A look at the kind of transformations we deliver.</p>
       </div>
       <div class="gallery">
-        <figure class="gallery__item"><span>Interior Repaint</span></figure>
+        <figure class="gallery__item">
+          <img src="assets/projects/interior-painting-repaint-massachusetts.jpg"
+               alt="Freshly repainted two-story living room with floor-to-ceiling ocean-view windows — interior painting by PRC Group in Massachusetts"
+               width="900" height="1200" loading="lazy" />
+          <span>Interior Repaint</span>
+        </figure>
         <figure class="gallery__item">
           <img src="assets/projects/kitchen-remodel-cabinets-countertop-massachusetts.jpg"
                alt="Kitchen remodel in progress with new white shaker cabinets, granite countertop and undermount sink — PRC Group, Massachusetts"

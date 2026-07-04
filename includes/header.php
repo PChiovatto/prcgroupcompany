@@ -43,6 +43,11 @@ function nav_active($k, $cur) { return $k === $cur ? ' aria-current="page"' : ''
   <meta property="og:url" content="<?= htmlspecialchars($canonical) ?>" />
   <meta property="og:site_name" content="<?= BUSINESS_NAME ?>" />
   <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="<?= SITE_URL ?>/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="<?= SITE_URL ?>/assets/og-image.jpg" />
 
   <script type="application/ld+json">
   {
