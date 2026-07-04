@@ -28,8 +28,11 @@ define('CLARITY_PROJECT_ID', 'xh7j23a8m5');
 define('GOOGLE_PROFILE_URL', 'https://g.page/r/Cej4IYrzsxhnEAI');
 define('GOOGLE_REVIEW_URL',  'https://g.page/r/Cej4IYrzsxhnEAI/review');
 
-// Where lead/booking emails are delivered — always this address.
+// Where lead/booking emails are actually delivered (kept private, not shown on the site).
 define('BUSINESS_EMAIL', 'prcgrouinc@gmail.com');
+
+// Public-facing email shown on the site (branded address on your domain).
+define('BUSINESS_EMAIL_PUBLIC', 'info@prcgroupcompany.com');
 
 // "From" address for outgoing mail — use an address on YOUR domain.
 define('FROM_EMAIL',     getenv('SMTP_FROM') ?: 'no-reply@prcgroupcompany.com');

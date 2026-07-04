@@ -232,7 +232,7 @@ include __DIR__ . '/includes/header.php';
         <p>Tell us about your project and we'll get back to you within one business day.</p>
         <ul class="contact__list">
           <li><span>📞</span> <a href="tel:<?= BUSINESS_PHONE_RAW ?>"><?= BUSINESS_PHONE ?></a></li>
-          <li><span>✉️</span> <a href="mailto:<?= BUSINESS_EMAIL ?>"><?= BUSINESS_EMAIL ?></a></li>
+          <li><span>✉️</span> <a href="mailto:<?= BUSINESS_EMAIL ?>"><?= BUSINESS_EMAIL_PUBLIC ?></a></li>
           <li><span>📍</span> <a href="<?= GOOGLE_PROFILE_URL ?>" target="_blank" rel="noopener"><?= BUSINESS_ADDRESS ?></a></li>
           <li><span>🗺️</span> Serving all of <?= BUSINESS_AREA ?></li>
           <li><span>🕐</span> <?= BUSINESS_HOURS ?></li>

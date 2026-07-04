@@ -56,7 +56,7 @@ function nav_active($k, $cur) { return $k === $cur ? ' aria-current="page"' : ''
     "name": "<?= BUSINESS_NAME ?>",
     "url": "<?= SITE_URL ?>",
     "telephone": "<?= BUSINESS_PHONE_RAW ?>",
-    "email": "<?= BUSINESS_EMAIL ?>",
+    "email": "<?= BUSINESS_EMAIL_PUBLIC ?>",
     "sameAs": ["<?= GOOGLE_PROFILE_URL ?>"],
     "foundingDate": "<?= BUSINESS_FOUNDED ?>",
     "address": {

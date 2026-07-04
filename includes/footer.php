@@ -34,7 +34,7 @@ $extraJS = $extraJS ?? [];
       <div class="footer__col">
         <h4>Contact</h4>
         <a href="tel:<?= BUSINESS_PHONE_RAW ?>"><?= BUSINESS_PHONE ?></a>
-        <a href="mailto:<?= BUSINESS_EMAIL ?>"><?= BUSINESS_EMAIL ?></a>
+        <a href="mailto:<?= BUSINESS_EMAIL ?>"><?= BUSINESS_EMAIL_PUBLIC ?></a>
         <a href="<?= GOOGLE_PROFILE_URL ?>" target="_blank" rel="noopener"><?= BUSINESS_ADDRESS ?></a>
         <span>Serving all of <?= BUSINESS_AREA ?></span>
         <span><?= BUSINESS_HOURS ?></span>
