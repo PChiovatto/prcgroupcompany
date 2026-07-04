@@ -53,6 +53,15 @@ function nav_active($k, $cur) { return $k === $cur ? ' aria-current="page"' : ''
     "telephone": "<?= BUSINESS_PHONE_RAW ?>",
     "email": "<?= BUSINESS_EMAIL ?>",
     "sameAs": ["<?= GOOGLE_PROFILE_URL ?>"],
+    "foundingDate": "<?= BUSINESS_FOUNDED ?>",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "<?= BUSINESS_STREET ?>",
+      "addressLocality": "<?= BUSINESS_CITY ?>",
+      "addressRegion": "<?= BUSINESS_STATE ?>",
+      "postalCode": "<?= BUSINESS_ZIP ?>",
+      "addressCountry": "US"
+    },
     "priceRange": "$$",
     "areaServed": { "@type": "State", "name": "<?= BUSINESS_AREA ?>" },
     "description": "Interior and exterior painting, general and finish carpentry, and full home remodeling throughout <?= BUSINESS_AREA ?>.",

@@ -11,6 +11,14 @@ define('BUSINESS_TAG',   'Painting · Carpentry · Remodeling');
 define('BUSINESS_PHONE',     '(781) 520-8245');
 define('BUSINESS_PHONE_RAW', '+17815208245');
 define('BUSINESS_AREA',  'Massachusetts');
+define('BUSINESS_FOUNDED', 2017);
+
+// --- Address ------------------------------------------------------------
+define('BUSINESS_STREET', '86 Albion St');
+define('BUSINESS_CITY',   'Wakefield');
+define('BUSINESS_STATE',  'MA');
+define('BUSINESS_ZIP',    '01880');
+define('BUSINESS_ADDRESS', BUSINESS_STREET . ', ' . BUSINESS_CITY . ', ' . BUSINESS_STATE . ' ' . BUSINESS_ZIP);
 define('BUSINESS_HOURS', 'Mon–Sat, 8AM–6PM');
 define('SITE_URL',       'https://www.prcgroupcompany.com');
 

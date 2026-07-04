@@ -18,7 +18,7 @@ include __DIR__ . '/includes/header.php';
         <a href="tools.php#calc-section" class="btn btn--ghost">Instant Quote</a>
       </div>
       <div class="hero__stats">
-        <div><strong>15+</strong><span>Years experience</span></div>
+        <div><strong><?= date('Y') - BUSINESS_FOUNDED ?>+</strong><span>Years in business</span></div>
         <div><strong>500+</strong><span>Projects completed</span></div>
         <div><strong>100%</strong><span>Satisfaction focus</span></div>
       </div>
@@ -91,8 +91,8 @@ include __DIR__ . '/includes/header.php';
     <div class="container about">
       <div class="about__media">
         <div class="about__badge">
-          <strong>15+</strong>
-          <span>Years of craftsmanship</span>
+          <strong>Since <?= BUSINESS_FOUNDED ?></strong>
+          <span>Craftsmanship in <?= BUSINESS_AREA ?></span>
         </div>
       </div>
       <div class="about__body">
@@ -202,7 +202,8 @@ include __DIR__ . '/includes/header.php';
         <ul class="contact__list">
           <li><span>📞</span> <a href="tel:<?= BUSINESS_PHONE_RAW ?>"><?= BUSINESS_PHONE ?></a></li>
           <li><span>✉️</span> <a href="mailto:<?= BUSINESS_EMAIL ?>"><?= BUSINESS_EMAIL ?></a></li>
-          <li><span>📍</span> Serving all of <?= BUSINESS_AREA ?></li>
+          <li><span>📍</span> <a href="<?= GOOGLE_PROFILE_URL ?>" target="_blank" rel="noopener"><?= BUSINESS_ADDRESS ?></a></li>
+          <li><span>🗺️</span> Serving all of <?= BUSINESS_AREA ?></li>
           <li><span>🕐</span> <?= BUSINESS_HOURS ?></li>
         </ul>
       </div>
