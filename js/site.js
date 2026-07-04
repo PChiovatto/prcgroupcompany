@@ -28,4 +28,21 @@
 
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* GA4 event helper — no-op if gtag is blocked or absent */
+  window.prcTrack = function (name, params) {
+    if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+  };
+
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+    a.addEventListener("click", function () {
+      window.prcTrack("phone_call_click", { link_url: a.getAttribute("href") });
+    });
+  });
+
+  document.querySelectorAll('a[href*="g.page"]').forEach(function (a) {
+    a.addEventListener("click", function () {
+      window.prcTrack("review_link_click", { link_url: a.getAttribute("href") });
+    });
+  });
 })();

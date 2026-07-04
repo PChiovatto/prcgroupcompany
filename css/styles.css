@@ -241,6 +241,8 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; color: var(--
 .review__stars { color: var(--ink); letter-spacing: 2px; margin-bottom: .8rem; }
 .review p { font-style: italic; color: var(--ink); margin-bottom: 1rem; }
 .review footer { font-weight: 700; font-family: var(--font-head); color: var(--navy); font-size: .9rem; }
+.reviews__cta { text-align: center; margin-top: 2.4rem; }
+.reviews__cta p { color: var(--muted); margin-bottom: 1rem; }
 
 /* ===== CTA banner ===== */
 .cta-banner { background: linear-gradient(120deg, var(--navy), var(--navy-soft)); color: #fff; }

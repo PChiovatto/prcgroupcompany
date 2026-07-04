@@ -150,7 +150,10 @@
     fetch("api/send.php", { method: "POST", body: fd })
       .then(function (r) { return r.json(); })
       .then(function (data) {
-        if (data && data.success) renderSuccess(details);
+        if (data && data.success) {
+          if (window.prcTrack) window.prcTrack("generate_lead", { form_type: "booking" });
+          renderSuccess(details);
+        }
         else fail(data && data.message);
       })
       .catch(function () { fail(); });

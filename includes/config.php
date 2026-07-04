@@ -14,6 +14,11 @@ define('BUSINESS_AREA',  'Massachusetts');
 define('BUSINESS_HOURS', 'Mon–Sat, 8AM–6PM');
 define('SITE_URL',       'https://www.prcgroupcompany.com');
 
+// --- Google -------------------------------------------------------------
+define('GA_MEASUREMENT_ID',  'G-Y43RH8X7K4');
+define('GOOGLE_PROFILE_URL', 'https://g.page/r/Cej4IYrzsxhnEAI');
+define('GOOGLE_REVIEW_URL',  'https://g.page/r/Cej4IYrzsxhnEAI/review');
+
 // Where lead/booking emails are delivered (override with LEAD_EMAIL env var).
 define('BUSINESS_EMAIL', getenv('LEAD_EMAIL') ?: 'info@prcgroupcompany.com');
 

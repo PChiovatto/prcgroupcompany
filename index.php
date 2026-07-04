@@ -174,6 +174,10 @@ include __DIR__ . '/includes/header.php';
           <p>"Full kitchen remodel from demo to paint. Clear pricing, clean crew, and the result
             exceeded our expectations."</p><footer>— Homeowner, Springfield</footer></blockquote>
       </div>
+      <div class="reviews__cta">
+        <p>Worked with us? Your feedback helps neighbors find a contractor they can trust.</p>
+        <a href="<?= GOOGLE_REVIEW_URL ?>" class="btn btn--primary" target="_blank" rel="noopener">★ Leave Us a Review on Google</a>
+      </div>
     </div>
   </section>
 

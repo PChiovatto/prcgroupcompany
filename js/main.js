@@ -29,6 +29,7 @@
         if (data && data.success) {
           note.className = "form-note ok";
           note.textContent = "Thanks! Your request has been sent — we'll be in touch shortly.";
+          if (window.prcTrack) window.prcTrack("generate_lead", { form_type: "contact" });
           form.reset();
         } else {
           note.className = "form-note err";

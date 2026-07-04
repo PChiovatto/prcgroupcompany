@@ -18,6 +18,16 @@ function nav_active($k, $cur) { return $k === $cur ? ' aria-current="page"' : ''
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#111111" />
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<?= GA_MEASUREMENT_ID ?>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '<?= GA_MEASUREMENT_ID ?>');
+  </script>
+
   <meta property="og:type" content="website" />
   <meta property="og:title" content="<?= htmlspecialchars($pageTitle) ?>" />
   <meta property="og:description" content="<?= htmlspecialchars($pageDesc) ?>" />
@@ -33,6 +43,7 @@ function nav_active($k, $cur) { return $k === $cur ? ' aria-current="page"' : ''
     "url": "<?= SITE_URL ?>",
     "telephone": "<?= BUSINESS_PHONE_RAW ?>",
     "email": "<?= BUSINESS_EMAIL ?>",
+    "sameAs": ["<?= GOOGLE_PROFILE_URL ?>"],
     "priceRange": "$$",
     "areaServed": { "@type": "State", "name": "<?= BUSINESS_AREA ?>" },
     "description": "Interior and exterior painting, general and finish carpentry, and full home remodeling throughout <?= BUSINESS_AREA ?>.",

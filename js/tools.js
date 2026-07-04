@@ -160,6 +160,7 @@
         .then(function (r) { return r.json(); })
         .then(function (data) {
           if (data && data.success) {
+            if (window.prcTrack) window.prcTrack("generate_lead", { form_type: "quote_calculator" });
             if (noteEl) { noteEl.className = "form-note ok"; noteEl.textContent = "Sent! We'll be in touch shortly with your detailed quote."; }
             backBtn.classList.add("is-hidden");
             nextBtn.classList.add("is-hidden");
