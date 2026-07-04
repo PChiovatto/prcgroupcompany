@@ -142,13 +142,17 @@ include __DIR__ . '/includes/header.php';
       <div class="section__head">
         <span class="section__eyebrow">Our Work</span>
         <h2>Recent Projects</h2>
-        <p>A look at the kind of transformations we deliver. (Swap these placeholders for your
-          real project photos.)</p>
+        <p>A look at the kind of transformations we deliver.</p>
       </div>
       <div class="gallery">
         <figure class="gallery__item"><span>Interior Repaint</span></figure>
         <figure class="gallery__item"><span>Kitchen Remodel</span></figure>
-        <figure class="gallery__item"><span>Exterior &amp; Siding</span></figure>
+        <figure class="gallery__item">
+          <img src="assets/projects/exterior-siding-painting-massachusetts.jpg"
+               alt="Exterior siding replacement and painting on a brick building in Massachusetts — PRC Group crew working from a boom lift"
+               width="1200" height="584" loading="lazy" />
+          <span>Exterior &amp; Siding</span>
+        </figure>
         <figure class="gallery__item"><span>Custom Trim</span></figure>
         <figure class="gallery__item"><span>Bathroom Renovation</span></figure>
         <figure class="gallery__item"><span>Deck &amp; Carpentry</span></figure>
