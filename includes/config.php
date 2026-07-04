@@ -16,6 +16,7 @@ define('SITE_URL',       'https://www.prcgroupcompany.com');
 
 // --- Google -------------------------------------------------------------
 define('GA_MEASUREMENT_ID',  'G-Y43RH8X7K4');
+define('CLARITY_PROJECT_ID', 'xh7j23a8m5');
 define('GOOGLE_PROFILE_URL', 'https://g.page/r/Cej4IYrzsxhnEAI');
 define('GOOGLE_REVIEW_URL',  'https://g.page/r/Cej4IYrzsxhnEAI/review');
 
