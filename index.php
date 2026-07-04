@@ -146,7 +146,12 @@ include __DIR__ . '/includes/header.php';
       </div>
       <div class="gallery">
         <figure class="gallery__item"><span>Interior Repaint</span></figure>
-        <figure class="gallery__item"><span>Kitchen Remodel</span></figure>
+        <figure class="gallery__item">
+          <img src="assets/projects/kitchen-remodel-cabinets-countertop-massachusetts.jpg"
+               alt="Kitchen remodel in progress with new white shaker cabinets, granite countertop and undermount sink — PRC Group, Massachusetts"
+               width="1200" height="675" loading="lazy" />
+          <span>Kitchen Remodel</span>
+        </figure>
         <figure class="gallery__item">
           <img src="assets/projects/exterior-siding-painting-massachusetts.jpg"
                alt="Exterior siding replacement and painting on a brick building in Massachusetts — PRC Group crew working from a boom lift"
