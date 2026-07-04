@@ -34,8 +34,10 @@ define('BUSINESS_EMAIL', 'prcgrouinc@gmail.com');
 // Public-facing email shown on the site (branded address on your domain).
 define('BUSINESS_EMAIL_PUBLIC', 'info@prcgroupcompany.com');
 
-// "From" address for outgoing mail — use an address on YOUR domain.
-define('FROM_EMAIL',     getenv('SMTP_FROM') ?: 'no-reply@prcgroupcompany.com');
+// "From" address for outgoing mail. When sending through Gmail SMTP the From
+// must be the authenticated account, so we fall back to SMTP_USER before the
+// domain address (Gmail rewrites/rejects a mismatched From otherwise).
+define('FROM_EMAIL',     getenv('SMTP_FROM') ?: (getenv('SMTP_USER') ?: 'no-reply@prcgroupcompany.com'));
 
 // Send the customer an automatic confirmation email for bookings?
 define('SEND_AUTOREPLY', true);
