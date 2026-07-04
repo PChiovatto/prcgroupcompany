@@ -46,37 +46,36 @@ include __DIR__ . '/includes/header.php';
       </div>
       <div class="cards">
         <article class="card">
-          <div class="card__icon">🎨</div>
           <h3>Interior Painting</h3>
           <p>Walls, ceilings, trim and cabinets finished with premium paints, sharp lines and
             full surface prep — minimal disruption to your home.</p>
+          <a href="#contact" class="card__more">Get a free estimate →</a>
         </article>
         <article class="card">
-          <div class="card__icon">🏠</div>
           <h3>Exterior Painting</h3>
           <p>Siding, decks, fences and doors protected against New England weather with proper
             prep, priming and durable coatings.</p>
+          <a href="#contact" class="card__more">Get a free estimate →</a>
         </article>
         <article class="card">
-          <div class="card__icon">🔨</div>
           <h3>General Carpentry</h3>
           <p>Framing, repairs, decks, doors, siding and structural fixes — solid, code-conscious
             carpentry by experienced builders.</p>
+          <a href="#contact" class="card__more">Get a free estimate →</a>
         </article>
         <article class="card">
-          <div class="card__icon">📐</div>
           <h3>Finish Carpentry</h3>
           <p>Crown molding, baseboards, wainscoting, built-ins and custom trim that add detail
             and value with a flawless fit.</p>
+          <a href="#contact" class="card__more">Get a free estimate →</a>
         </article>
         <article class="card">
-          <div class="card__icon">🛠️</div>
           <h3>Home Remodeling</h3>
           <p>Kitchens, bathrooms and full-room renovations managed end to end — design help,
             demo, build and finish.</p>
+          <a href="#contact" class="card__more">Get a free estimate →</a>
         </article>
         <article class="card card--accent">
-          <div class="card__icon">📞</div>
           <h3>Not sure where to start?</h3>
           <p>Try our instant quote calculator or tell us about your project for a clear,
             written estimate — free.</p>
@@ -90,6 +89,9 @@ include __DIR__ . '/includes/header.php';
   <section class="section section--alt" id="about">
     <div class="container about">
       <div class="about__media">
+        <img src="assets/projects/custom-trim-wainscoting-carpentry-massachusetts.jpg"
+             alt="Detail of custom trim and paneling work by PRC Group — the craftsmanship behind every project"
+             loading="lazy" />
         <div class="about__badge">
           <strong>Since <?= BUSINESS_FOUNDED ?></strong>
           <span>Craftsmanship in <?= BUSINESS_AREA ?></span>
