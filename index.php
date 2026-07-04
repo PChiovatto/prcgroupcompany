@@ -154,8 +154,18 @@ include __DIR__ . '/includes/header.php';
           <span>Exterior &amp; Siding</span>
         </figure>
         <figure class="gallery__item"><span>Custom Trim</span></figure>
-        <figure class="gallery__item"><span>Bathroom Renovation</span></figure>
-        <figure class="gallery__item"><span>Deck &amp; Carpentry</span></figure>
+        <figure class="gallery__item">
+          <img src="assets/projects/bathroom-renovation-remodeling-massachusetts.jpg"
+               alt="Renovated bathroom with white wainscoting, marble-top vanity and new flooring — remodeling by PRC Group in Massachusetts"
+               width="900" height="1200" loading="lazy" />
+          <span>Bathroom Renovation</span>
+        </figure>
+        <figure class="gallery__item">
+          <img src="assets/projects/deck-construction-carpentry-massachusetts.jpg"
+               alt="New pressure-treated deck framing built by PRC Group carpenters at a Massachusetts home"
+               width="675" height="1200" loading="lazy" />
+          <span>Deck &amp; Carpentry</span>
+        </figure>
       </div>
     </div>
   </section>
