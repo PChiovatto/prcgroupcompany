@@ -15,6 +15,23 @@
   font-size: .85rem; font-weight: 600; color: #fff; text-decoration: none; background: rgba(255,255,255,.06);
 }
 .city-chips a:hover { background: rgba(255,255,255,.15); }
+.city-chips--dark span, .city-chips--dark a {
+  border-color: var(--line); color: var(--ink); background: var(--bg-alt);
+}
+.city-chips--dark a:hover { border-color: var(--navy); color: var(--navy); background: #fff; }
+
+/* full-bleed photo hero with per-city image (set inline) */
+.cityphoto-hero {
+  position: relative; color: #fff; padding: 6.5rem 0 5rem;
+  background-size: cover; background-position: center 35%;
+}
+.cityphoto-hero .svc-breadcrumb, .cityphoto-hero .svc-breadcrumb a { color: #b9c0c9; }
+.cityphoto-hero h1 { color: #fff; font-size: clamp(1.9rem, 3.8vw, 2.8rem); line-height: 1.15; margin: .5rem 0 1rem; max-width: 24ch; }
+.cityphoto-hero p { color: #e3e6ea; max-width: 44rem; font-size: 1.06rem; }
+
+/* ghost button on light background (cols3 body) */
+.city-ghost--light { border: 2px solid var(--navy); color: var(--navy); background: transparent; }
+.city-ghost--light:hover { background: var(--navy); color: #fff; }
 
 .city-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 3.5rem; align-items: start; }
 .city-svc { border-bottom: 1px solid var(--line); padding: 1.15rem 0; display: grid;

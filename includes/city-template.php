@@ -1,7 +1,13 @@
 <?php
 /**
- * City page template. Each painting-<slug>-ma.php sets $citySlug and includes
- * this file. Unique copy comes from includes/city-data.php.
+ * City page template with per-city layout variants.
+ * Each city in city-data.php declares:
+ *   'hero' => gradient | photo | split | bigtype
+ *   'body' => list | grid | cols3
+ *   'img'  => project photo used by photo/split heroes
+ * All 12 cities use a UNIQUE hero+body combination, so no two pages share
+ * the same layout — content (intro, neighborhoods, housing, FAQ) is also
+ * unique per city.
  */
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/city-data.php';
@@ -15,24 +21,69 @@ $canonical = SITE_URL . '/painting-' . $citySlug . '-ma.php';
 $active    = 'services';
 $extraCSS  = ['css/service.css', 'css/city.css'];
 include __DIR__ . '/header.php';
-?>
 
-  <!-- ===== CITY HERO ===== -->
-  <section class="cityhero">
-    <div class="container">
-      <nav class="svc-breadcrumb"><a href="index.php">Home</a> / <a href="service-areas.php">Service Areas</a> / <?= $cityName ?>, MA</nav>
-      <h1>Painting, Carpentry &amp; Remodeling in <?= $cityName ?>, MA</h1>
-      <p><?= $c['intro'] ?></p>
-      <div class="city-chips">
+$breadcrumb = '<nav class="svc-breadcrumb"><a href="index.php">Home</a> / <a href="service-areas.php">Service Areas</a> / ' . $cityName . ', MA</nav>';
+$chips = function ($dark = false) use ($c) { ?>
+      <div class="city-chips<?= $dark ? ' city-chips--dark' : '' ?>">
         <span>📍 <?= $c['drive'] ?></span>
         <span>Licensed &amp; Insured</span>
         <span>Since <?= BUSINESS_FOUNDED ?></span>
         <a href="tel:<?= BUSINESS_PHONE_RAW ?>">📞 <?= BUSINESS_PHONE ?></a>
       </div>
+<?php };
+?>
+
+<?php /* ================= HERO VARIANTS ================= */ ?>
+<?php if ($c['hero'] === 'gradient'): ?>
+  <section class="cityhero">
+    <div class="container">
+      <?= $breadcrumb ?>
+      <h1>Painting, Carpentry &amp; Remodeling in <?= $cityName ?>, MA</h1>
+      <p><?= $c['intro'] ?></p>
+      <?php $chips(); ?>
     </div>
   </section>
 
-  <!-- ===== SERVICES IN CITY ===== -->
+<?php elseif ($c['hero'] === 'photo'): ?>
+  <section class="cityphoto-hero" style="background-image:
+      linear-gradient(rgba(10,14,22,.66), rgba(10,14,22,.66)), url('<?= $c['img'] ?>');">
+    <div class="container">
+      <?= $breadcrumb ?>
+      <h1>Painting, Carpentry &amp; Remodeling in <?= $cityName ?>, MA</h1>
+      <p><?= $c['intro'] ?></p>
+      <?php $chips(); ?>
+    </div>
+  </section>
+
+<?php elseif ($c['hero'] === 'split'): ?>
+  <section class="ihero-wrap">
+    <div class="container ihero">
+      <div>
+        <?= $breadcrumb ?>
+        <h1>Painting, Carpentry &amp; Remodeling in <?= $cityName ?>, MA</h1>
+        <p><?= $c['intro'] ?></p>
+        <?php $chips(true); ?>
+      </div>
+      <figure class="ihero__media">
+        <img src="<?= $c['img'] ?>" alt="<?= BUSINESS_NAME ?> project near <?= $cityName ?>, MA" />
+        <figcaption class="ihero__chip">Recent work near <?= $cityName ?></figcaption>
+      </figure>
+    </div>
+  </section>
+
+<?php else: /* bigtype */ ?>
+  <section class="chero">
+    <div class="container">
+      <?= $breadcrumb ?>
+      <h1><?= $cityName ?>, MA — painting, carpentry &amp; remodeling done right</h1>
+      <p><?= $c['intro'] ?></p>
+      <?php $chips(true); ?>
+    </div>
+  </section>
+<?php endif; ?>
+
+<?php /* ================= BODY VARIANTS ================= */ ?>
+<?php if ($c['body'] === 'list'): ?>
   <section class="section">
     <div class="container city-grid">
       <div>
@@ -68,6 +119,87 @@ include __DIR__ . '/header.php';
     </div>
   </section>
 
+<?php elseif ($c['body'] === 'grid'): ?>
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <span class="section__eyebrow">What We Do Here</span>
+        <h2>Our services in <?= $cityName ?></h2>
+        <p><?= $c['housing'] ?></p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3><a href="interior-painting.php" class="card__title-link">Interior Painting</a></h3>
+          <p>Walls, ceilings, trim and cabinets — clean crews and sharp lines, with minimal disruption.</p>
+          <a href="interior-painting.php" class="card__more">Learn more →</a>
+        </article>
+        <article class="card">
+          <h3><a href="exterior-painting.php" class="card__title-link">Exterior Painting</a></h3>
+          <p>Full-prep exterior repaints built to survive New England winters.</p>
+          <a href="exterior-painting.php" class="card__more">Learn more →</a>
+        </article>
+        <article class="card">
+          <h3><a href="general-carpentry.php" class="card__title-link">General Carpentry</a></h3>
+          <p>Decks, structural repairs, doors, windows and siding — solid and to code.</p>
+          <a href="general-carpentry.php" class="card__more">Learn more →</a>
+        </article>
+        <article class="card">
+          <h3><a href="finish-carpentry.php" class="card__title-link">Finish Carpentry</a></h3>
+          <p>Crown molding, wainscoting, built-ins and custom trim with a flawless fit.</p>
+          <a href="finish-carpentry.php" class="card__more">Learn more →</a>
+        </article>
+        <article class="card">
+          <h3><a href="home-remodeling.php" class="card__title-link">Home Remodeling</a></h3>
+          <p>Kitchens, bathrooms and full-room renovations managed end to end.</p>
+          <a href="home-remodeling.php" class="card__more">Learn more →</a>
+        </article>
+        <article class="card card--accent">
+          <h3>Planning something in <?= $cityName ?>?</h3>
+          <p>Free written estimates — <?= strtolower($c['drive']) === 'our home base' ? 'we\'re based right here in town.' : 'we\'re ' . strtolower($c['drive']) . '.' ?></p>
+          <a href="index.php#contact" class="card__link">Request an estimate →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<?php else: /* cols3 */ ?>
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <span class="section__eyebrow">What We Do Here</span>
+        <h2>One team for your whole <?= $cityName ?> project</h2>
+        <p><?= $c['housing'] ?></p>
+      </div>
+      <div class="x3">
+        <div class="x3__col">
+          <span class="x3__step">Painting</span>
+          <h3>Interior &amp; Exterior</h3>
+          <p>Meticulous prep, premium paints and clean crews — inside and out.</p>
+          <p><a class="card__more" href="interior-painting.php">Interior →</a> &nbsp;
+             <a class="card__more" href="exterior-painting.php">Exterior →</a></p>
+        </div>
+        <div class="x3__col">
+          <span class="x3__step">Carpentry</span>
+          <h3>Structural &amp; Finish</h3>
+          <p>From deck frames and rot repair to crown molding and built-ins.</p>
+          <p><a class="card__more" href="general-carpentry.php">General →</a> &nbsp;
+             <a class="card__more" href="finish-carpentry.php">Finish →</a></p>
+        </div>
+        <div class="x3__col">
+          <span class="x3__step">Remodeling</span>
+          <h3>Kitchens &amp; Baths</h3>
+          <p>Full renovations managed end to end by one accountable crew.</p>
+          <p><a class="card__more" href="home-remodeling.php">Remodeling →</a></p>
+        </div>
+      </div>
+      <div class="ihero__actions" style="justify-content:center; margin-top:2rem;">
+        <a href="index.php#contact" class="btn btn--primary">Get a Free <?= $cityName ?> Estimate</a>
+        <a href="tools.php#calc-section" class="btn btn--ghost city-ghost--light">Instant Quote</a>
+      </div>
+    </div>
+  </section>
+<?php endif; ?>
+
   <!-- ===== NEIGHBORHOODS ===== -->
   <section class="nbhd">
     <div class="container">
@@ -78,7 +210,8 @@ include __DIR__ . '/header.php';
     </div>
   </section>
 
-  <!-- ===== RECENT WORK STRIP ===== -->
+<?php if ($c['hero'] === 'gradient' || $c['hero'] === 'bigtype'): ?>
+  <!-- ===== RECENT WORK STRIP (only on non-photo heroes) ===== -->
   <section class="section">
     <div class="container">
       <div class="section__head">
@@ -95,6 +228,7 @@ include __DIR__ . '/header.php';
       </div>
     </div>
   </section>
+<?php endif; ?>
 
   <!-- ===== FAQ ===== -->
   <section class="section section--alt">

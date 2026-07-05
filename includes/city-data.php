@@ -8,6 +8,7 @@
 $CITIES = [
 
   'wakefield' => [
+    'hero' => 'split', 'body' => 'list', 'img' => 'assets/projects/interior-painting-repaint-massachusetts.jpg',
     'name'  => 'Wakefield',
     'drive' => 'Our home base',
     'intro' => 'Wakefield is home — our shop is right on Albion Street. From Greenwood to the shores
@@ -23,6 +24,7 @@ $CITIES = [
   ],
 
   'winchester' => [
+    'hero' => 'bigtype', 'body' => 'list', 'img' => '',
     'name'  => 'Winchester',
     'drive' => '± 15 min from our Wakefield shop',
     'intro' => 'Winchester\'s grand Victorians and center-entrance colonials deserve better than a
@@ -37,6 +39,7 @@ $CITIES = [
   ],
 
   'lynnfield' => [
+    'hero' => 'gradient', 'body' => 'grid', 'img' => '',
     'name'  => 'Lynnfield',
     'drive' => '± 10 min from our Wakefield shop',
     'intro' => 'Right next door to our Wakefield shop, Lynnfield is one of our most active towns.
@@ -52,6 +55,7 @@ $CITIES = [
   ],
 
   'reading' => [
+    'hero' => 'photo', 'body' => 'cols3', 'img' => 'assets/projects/exterior-siding-painting-massachusetts.jpg',
     'name'  => 'Reading',
     'drive' => '± 10 min from our Wakefield shop',
     'intro' => 'Reading\'s classic colonials and capes are our bread and butter. We\'re ten minutes
@@ -66,6 +70,7 @@ $CITIES = [
   ],
 
   'north-reading' => [
+    'hero' => 'gradient', 'body' => 'list', 'img' => '',
     'name'  => 'North Reading',
     'drive' => '± 15 min from our Wakefield shop',
     'intro' => 'From Martins Pond to Park Colony, North Reading homeowners use PRC Group for the
@@ -81,6 +86,7 @@ $CITIES = [
   ],
 
   'melrose' => [
+    'hero' => 'photo', 'body' => 'grid', 'img' => 'assets/projects/custom-trim-wainscoting-carpentry-massachusetts.jpg',
     'name'  => 'Melrose',
     'drive' => '± 10 min from our Wakefield shop',
     'intro' => 'Melrose might be the most paint-intensive town we serve — street after street of
@@ -96,6 +102,7 @@ $CITIES = [
   ],
 
   'stoneham' => [
+    'hero' => 'split', 'body' => 'grid', 'img' => 'assets/projects/deck-construction-carpentry-massachusetts.jpg',
     'name'  => 'Stoneham',
     'drive' => '± 10 min from our Wakefield shop',
     'intro' => 'Stoneham borders our home town, and from Bear Hill to Colonial Park we handle the
@@ -110,6 +117,7 @@ $CITIES = [
   ],
 
   'lexington' => [
+    'hero' => 'bigtype', 'body' => 'cols3', 'img' => '',
     'name'  => 'Lexington',
     'drive' => '± 25 min from our Wakefield shop',
     'intro' => 'Lexington homeowners invest in their homes — and expect craftsmanship in return.
@@ -125,6 +133,7 @@ $CITIES = [
   ],
 
   'andover' => [
+    'hero' => 'photo', 'body' => 'list', 'img' => 'assets/projects/kitchen-remodel-cabinets-countertop-massachusetts.jpg',
     'name'  => 'Andover',
     'drive' => '± 25 min from our Wakefield shop',
     'intro' => 'From In-Town streets near Phillips Academy to Shawsheen Village and the newer
@@ -140,6 +149,7 @@ $CITIES = [
   ],
 
   'marblehead' => [
+    'hero' => 'split', 'body' => 'cols3', 'img' => 'assets/projects/bathroom-renovation-remodeling-massachusetts.jpg',
     'name'  => 'Marblehead',
     'drive' => '± 25 min from our Wakefield shop',
     'intro' => 'Salt air is merciless on paint — and nowhere more than Marblehead. From antique
@@ -156,6 +166,7 @@ $CITIES = [
   ],
 
   'swampscott' => [
+    'hero' => 'gradient', 'body' => 'cols3', 'img' => '',
     'name'  => 'Swampscott',
     'drive' => '± 20 min from our Wakefield shop',
     'intro' => 'Swampscott\'s coastal Victorians and shingle-style homes take a beating from wind
@@ -171,6 +182,7 @@ $CITIES = [
   ],
 
   'woburn' => [
+    'hero' => 'bigtype', 'body' => 'grid', 'img' => '',
     'name'  => 'Woburn',
     'drive' => '± 15 min from our Wakefield shop',
     'intro' => 'Woburn homeowners want honest pricing and solid work — exactly how we built our
