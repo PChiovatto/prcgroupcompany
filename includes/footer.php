@@ -17,11 +17,11 @@ $extraJS = $extraJS ?? [];
       </div>
       <div class="footer__col">
         <h4>Services</h4>
-        <a href="index.php#services">Interior Painting</a>
-        <a href="index.php#services">Exterior Painting</a>
-        <a href="index.php#services">General Carpentry</a>
-        <a href="index.php#services">Finish Carpentry</a>
-        <a href="index.php#services">Home Remodeling</a>
+        <a href="interior-painting.php">Interior Painting</a>
+        <a href="exterior-painting.php">Exterior Painting</a>
+        <a href="general-carpentry.php">General Carpentry</a>
+        <a href="finish-carpentry.php">Finish Carpentry</a>
+        <a href="home-remodeling.php">Home Remodeling</a>
       </div>
       <div class="footer__col">
         <h4>Quick Links</h4>

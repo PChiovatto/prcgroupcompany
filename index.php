@@ -46,34 +46,34 @@ include __DIR__ . '/includes/header.php';
       </div>
       <div class="cards">
         <article class="card">
-          <h3>Interior Painting</h3>
+          <h3><a href="interior-painting.php" class="card__title-link">Interior Painting</a></h3>
           <p>Walls, ceilings, trim and cabinets finished with premium paints, sharp lines and
             full surface prep — minimal disruption to your home.</p>
-          <a href="#contact" class="card__more">Get a free estimate →</a>
+          <a href="interior-painting.php" class="card__more">Learn more →</a>
         </article>
         <article class="card">
-          <h3>Exterior Painting</h3>
+          <h3><a href="exterior-painting.php" class="card__title-link">Exterior Painting</a></h3>
           <p>Siding, decks, fences and doors protected against New England weather with proper
             prep, priming and durable coatings.</p>
-          <a href="#contact" class="card__more">Get a free estimate →</a>
+          <a href="exterior-painting.php" class="card__more">Learn more →</a>
         </article>
         <article class="card">
-          <h3>General Carpentry</h3>
+          <h3><a href="general-carpentry.php" class="card__title-link">General Carpentry</a></h3>
           <p>Framing, repairs, decks, doors, siding and structural fixes — solid, code-conscious
             carpentry by experienced builders.</p>
-          <a href="#contact" class="card__more">Get a free estimate →</a>
+          <a href="general-carpentry.php" class="card__more">Learn more →</a>
         </article>
         <article class="card">
-          <h3>Finish Carpentry</h3>
+          <h3><a href="finish-carpentry.php" class="card__title-link">Finish Carpentry</a></h3>
           <p>Crown molding, baseboards, wainscoting, built-ins and custom trim that add detail
             and value with a flawless fit.</p>
-          <a href="#contact" class="card__more">Get a free estimate →</a>
+          <a href="finish-carpentry.php" class="card__more">Learn more →</a>
         </article>
         <article class="card">
-          <h3>Home Remodeling</h3>
+          <h3><a href="home-remodeling.php" class="card__title-link">Home Remodeling</a></h3>
           <p>Kitchens, bathrooms and full-room renovations managed end to end — design help,
             demo, build and finish.</p>
-          <a href="#contact" class="card__more">Get a free estimate →</a>
+          <a href="home-remodeling.php" class="card__more">Learn more →</a>
         </article>
         <article class="card card--accent">
           <h3>Not sure where to start?</h3>

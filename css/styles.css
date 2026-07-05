@@ -179,6 +179,8 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; color: var(--
 }
 .card:hover::before { width: 76px; }
 .card h3 { font-size: 1.3rem; margin-bottom: .6rem; }
+.card__title-link { color: inherit; text-decoration: none; }
+.card__title-link:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 4px; }
 .card p { color: var(--muted); font-size: .96rem; flex-grow: 1; }
 .card__more {
   display: inline-block; margin-top: 1.2rem; color: var(--navy);

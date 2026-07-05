@@ -1,0 +1,169 @@
+/* ============================================================
+   PRC Group — service pages
+   Shared pieces (breadcrumb, FAQ, cross-links) + a distinct
+   layout system per service so no two pages look alike.
+   ============================================================ */
+
+/* ---------- shared ---------- */
+.svc-breadcrumb { font-size: .85rem; color: var(--muted); margin-bottom: 1rem; }
+.svc-breadcrumb a { color: var(--muted); text-decoration: none; }
+.svc-breadcrumb a:hover { color: var(--navy); text-decoration: underline; }
+
+.svc-faq { max-width: 760px; margin: 0 auto; }
+.svc-faq details {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 1.1rem 1.3rem; margin-bottom: .8rem;
+}
+.svc-faq summary {
+  cursor: pointer; font-weight: 700; font-family: var(--font-head); color: var(--ink);
+  list-style: none; position: relative; padding-right: 2rem;
+}
+.svc-faq summary::-webkit-details-marker { display: none; }
+.svc-faq summary::after {
+  content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  font-size: 1.3rem; color: var(--navy); transition: transform .2s ease;
+}
+.svc-faq details[open] summary::after { content: "–"; }
+.svc-faq details p { color: var(--muted); margin-top: .8rem; }
+
+.svc-other { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; margin-top: 1.4rem; }
+.svc-other a {
+  border: 1px solid var(--line); background: #fff; color: var(--ink);
+  padding: .55rem 1.1rem; border-radius: 999px; text-decoration: none;
+  font-size: .9rem; font-weight: 600; transition: border-color .2s, color .2s;
+}
+.svc-other a:hover { border-color: var(--navy); color: var(--navy); }
+
+/* ============================================================
+   1. INTERIOR PAINTING — light split hero, airy room-list grid
+   ============================================================ */
+.ihero { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 3rem;
+  padding: 4.5rem 0 4rem; }
+.ihero h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.12; margin: .4rem 0 1.1rem; }
+.ihero p { color: var(--muted); font-size: 1.08rem; max-width: 34rem; }
+.ihero__actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
+.ihero__media { position: relative; }
+.ihero__media img { width: 100%; height: 460px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-md); }
+.ihero__chip {
+  position: absolute; left: -14px; bottom: 24px; background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow-md); padding: .8rem 1.1rem;
+  font-family: var(--font-head); font-weight: 700; font-size: .92rem;
+}
+.iroom-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.iroom {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 1.2rem 1.1rem; font-weight: 600; font-size: .95rem;
+  border-left: 4px solid var(--navy);
+}
+.iroom small { display: block; font-weight: 400; color: var(--muted); margin-top: .3rem; }
+
+/* ============================================================
+   2. EXTERIOR PAINTING — full-bleed photo hero, weather bands
+   ============================================================ */
+.xhero {
+  position: relative; color: #fff; text-align: center; padding: 7.5rem 0;
+  background:
+    linear-gradient(rgba(10, 14, 22, .68), rgba(10, 14, 22, .68)),
+    url("../assets/projects/exterior-siding-painting-massachusetts.jpg") center 30% / cover no-repeat;
+}
+.xhero h1 { font-size: clamp(2.1rem, 4.5vw, 3.2rem); margin: .5rem 0 1rem; color: #fff; }
+.xhero p { color: #e3e6ea; max-width: 40rem; margin: 0 auto 1.8rem; font-size: 1.08rem; }
+.xhero .svc-breadcrumb, .xhero .svc-breadcrumb a { color: #b9c0c9; }
+.x3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden; background: #fff; }
+.x3__col { padding: 2.2rem 1.9rem; border-left: 1px solid var(--line); }
+.x3__col:first-child { border-left: 0; }
+.x3__step { font-family: var(--font-head); font-weight: 800; font-size: .8rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted); }
+.x3__col h3 { font-size: 1.3rem; margin: .5rem 0 .6rem; }
+.x3__col p { color: var(--muted); font-size: .96rem; }
+.xlist { columns: 2; column-gap: 3rem; max-width: 860px; margin: 0 auto; }
+.xlist li { break-inside: avoid; padding: .55rem 0 .55rem 1.6rem; position: relative; color: var(--ink); }
+.xlist li::before { content: "✔"; position: absolute; left: 0; color: var(--navy); font-weight: 700; }
+
+/* ============================================================
+   3. GENERAL CARPENTRY — bold type hero, numbered capability
+      rows with a sticky photo column
+   ============================================================ */
+.chero { padding: 5rem 0 3.5rem; border-bottom: 4px solid var(--navy); }
+.chero h1 { font-size: clamp(2.3rem, 5.5vw, 4rem); line-height: 1.05; margin: .4rem 0 1rem;
+  max-width: 18ch; }
+.chero p { color: var(--muted); font-size: 1.08rem; max-width: 36rem; }
+.c-layout { display: grid; grid-template-columns: 1.2fr .9fr; gap: 3.5rem; align-items: start; }
+.c-photo { position: sticky; top: 110px; }
+.c-photo img { width: 100%; height: 520px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-md); }
+.c-photo figcaption { font-size: .85rem; color: var(--muted); margin-top: .6rem; }
+.crow { display: grid; grid-template-columns: 84px 1fr; gap: 1.4rem; padding: 1.6rem 0;
+  border-bottom: 1px solid var(--line); }
+.crow:last-child { border-bottom: 0; }
+.crow__num { font-family: var(--font-head); font-weight: 800; font-size: 2rem; color: transparent;
+  -webkit-text-stroke: 1.6px var(--navy); line-height: 1; padding-top: .2rem; }
+.crow h3 { font-size: 1.2rem; margin-bottom: .4rem; }
+.crow p { color: var(--muted); font-size: .95rem; }
+
+/* ============================================================
+   4. FINISH CARPENTRY — editorial: narrow centered intro,
+      tall photo, magazine columns and a pull-quote
+   ============================================================ */
+.fhero { text-align: center; max-width: 720px; margin: 0 auto; padding: 4.5rem 0 3rem; }
+.fhero h1 { font-size: clamp(2rem, 4vw, 3rem); margin: .5rem 0 1rem; }
+.fhero p { color: var(--muted); font-size: 1.1rem; }
+.f-photo { max-width: 980px; margin: 0 auto; }
+.f-photo img { width: 100%; height: 480px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-md); }
+.f-cols { columns: 2; column-gap: 3.2rem; max-width: 900px; margin: 0 auto; }
+.f-cols p { color: var(--muted); margin-bottom: 1rem; break-inside: avoid; }
+.f-cols p:first-child::first-letter {
+  font-family: var(--font-head); font-weight: 800; font-size: 3.2rem; float: left;
+  line-height: .9; padding-right: .6rem; color: var(--navy);
+}
+.f-quote { text-align: center; max-width: 700px; margin: 0 auto; padding: 1rem 0; }
+.f-quote p { font-family: var(--font-head); font-weight: 700; font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+  line-height: 1.35; color: var(--ink); }
+.f-quote p::before { content: "“"; color: var(--navy); }
+.f-quote p::after { content: "”"; color: var(--navy); }
+.f-tags { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; max-width: 760px; margin: 1.6rem auto 0; }
+.f-tags span { background: var(--bg-alt); border: 1px solid var(--line); border-radius: 999px;
+  padding: .5rem 1.05rem; font-size: .9rem; font-weight: 600; }
+
+/* ============================================================
+   5. HOME REMODELING — photo mosaic hero, vertical timeline
+   ============================================================ */
+.rhero { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; padding: 4.5rem 0 4rem; }
+.rhero h1 { font-size: clamp(2rem, 4vw, 2.9rem); line-height: 1.12; margin: .4rem 0 1rem; }
+.rhero p { color: var(--muted); font-size: 1.08rem; }
+.r-mosaic { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.r-mosaic img { width: 100%; object-fit: cover; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
+.r-mosaic img:first-child { height: 420px; grid-row: span 2; }
+.r-mosaic img:last-child { height: 200px; }
+.r-mosaic .r-mosaic__badge {
+  background: var(--navy); color: #fff; border-radius: var(--radius-sm); display: grid; place-items: center;
+  text-align: center; font-family: var(--font-head); font-weight: 700; padding: 1rem; height: 204px;
+}
+.r-mosaic .r-mosaic__badge strong { font-size: 1.7rem; display: block; }
+.r-timeline { max-width: 760px; margin: 0 auto; position: relative; padding-left: 2.2rem; }
+.r-timeline::before { content: ""; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+.r-step { position: relative; padding: 0 0 1.9rem; }
+.r-step:last-child { padding-bottom: 0; }
+.r-step::before { content: ""; position: absolute; left: -2.2rem; top: 6px; width: 20px; height: 20px;
+  border-radius: 50%; background: #fff; border: 5px solid var(--navy); }
+.r-step h3 { font-size: 1.15rem; margin-bottom: .3rem; }
+.r-step p { color: var(--muted); font-size: .95rem; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 960px) {
+  .ihero, .rhero, .c-layout { grid-template-columns: 1fr; }
+  .c-photo { position: static; }
+  .c-photo img { height: 340px; }
+  .ihero__media img { height: 360px; }
+  .iroom-grid { grid-template-columns: repeat(2, 1fr); }
+  .x3 { grid-template-columns: 1fr; }
+  .x3__col { border-left: 0; border-top: 1px solid var(--line); }
+  .x3__col:first-child { border-top: 0; }
+}
+@media (max-width: 640px) {
+  .xlist, .f-cols { columns: 1; }
+  .iroom-grid { grid-template-columns: 1fr; }
+  .xhero { padding: 5rem 0; }
+  .f-photo img { height: 300px; }
+  .r-mosaic img:first-child { height: 300px; }
+}
