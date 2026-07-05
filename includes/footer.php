@@ -28,6 +28,7 @@ $extraJS = $extraJS ?? [];
         <a href="tools.php#calc-section">Quote Calculator</a>
         <a href="tools.php#visualizer">Color Visualizer</a>
         <a href="booking.php">Book Appointment</a>
+        <a href="service-areas.php">Service Areas</a>
         <a href="index.php#contact">Contact</a>
         <a href="<?= GOOGLE_REVIEW_URL ?>" target="_blank" rel="noopener">★ Review Us on Google</a>
       </div>
