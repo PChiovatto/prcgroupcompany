@@ -36,7 +36,11 @@ function native_mail($to, $subject, array $lines, $replyTo = null) {
     $headers[] = 'MIME-Version: 1.0';
     $headers[] = 'Content-Type: text/plain; charset=UTF-8';
     $encSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
-    return @mail($to, $encSubject, $body, implode("\r\n", $headers));
+    $ok = @mail($to, $encSubject, $body, implode("\r\n", $headers));
+    if (!$ok) {
+        $GLOBALS['SMTP_LAST_ERROR'] = 'PHP mail() failed - no mail server in this container; configure SMTP env vars';
+    }
+    return $ok;
 }
 
 /** Build the RFC 5322 message (headers + dot-stuffed body). */
@@ -80,6 +84,7 @@ function smtp_send($to, $subject, array $lines, $replyTo = null) {
 
     $fp = @stream_socket_client($remote, $errno, $errstr, 20, STREAM_CLIENT_CONNECT, $ctx);
     if (!$fp) {
+        $GLOBALS['SMTP_LAST_ERROR'] = "connect -> $errno $errstr ($remote)";
         error_log("SMTP connect failed: $errno $errstr");
         return false;
     }
@@ -96,29 +101,43 @@ function smtp_send($to, $subject, array $lines, $replyTo = null) {
     };
     $code = function ($resp) { return (int) substr((string) $resp, 0, 3); };
     $cmd  = function ($line) use ($fp, $read) { fwrite($fp, $line . "\r\n"); return $read(); };
-    $fail = function () use ($fp) { @fwrite($fp, "QUIT\r\n"); @fclose($fp); return false; };
+    $fail = function ($step, $resp = '') use ($fp) {
+        $GLOBALS['SMTP_LAST_ERROR'] = trim($step . ' -> ' . trim((string) $resp));
+        error_log('SMTP fail at ' . $GLOBALS['SMTP_LAST_ERROR']);
+        @fwrite($fp, "QUIT\r\n"); @fclose($fp); return false;
+    };
 
-    if ($code($read()) !== 220) return $fail();
+    $resp = $read();
+    if ($code($resp) !== 220) return $fail('greeting', $resp);
 
     $ehloHost = $_SERVER['SERVER_NAME'] ?? 'localhost';
-    if ($code($cmd('EHLO ' . $ehloHost)) !== 250) return $fail();
+    $resp = $cmd('EHLO ' . $ehloHost);
+    if ($code($resp) !== 250) return $fail('EHLO', $resp);
 
     if ($secure === 'tls') {
-        if ($code($cmd('STARTTLS')) !== 220) return $fail();
-        if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) return $fail();
-        if ($code($cmd('EHLO ' . $ehloHost)) !== 250) return $fail();
+        $resp = $cmd('STARTTLS');
+        if ($code($resp) !== 220) return $fail('STARTTLS', $resp);
+        if (!stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) return $fail('TLS handshake');
+        $resp = $cmd('EHLO ' . $ehloHost);
+        if ($code($resp) !== 250) return $fail('EHLO after TLS', $resp);
     }
 
     if (SMTP_USER !== '') {
-        if ($code($cmd('AUTH LOGIN')) !== 334) return $fail();
-        if ($code($cmd(base64_encode(SMTP_USER))) !== 334) return $fail();
-        if ($code($cmd(base64_encode(SMTP_PASS))) !== 235) return $fail();
+        $resp = $cmd('AUTH LOGIN');
+        if ($code($resp) !== 334) return $fail('AUTH LOGIN', $resp);
+        $resp = $cmd(base64_encode(SMTP_USER));
+        if ($code($resp) !== 334) return $fail('AUTH user', $resp);
+        $resp = $cmd(base64_encode(SMTP_PASS));
+        if ($code($resp) !== 235) return $fail('AUTH password (wrong or not an App Password?)', $resp);
     }
 
-    if ($code($cmd('MAIL FROM:<' . FROM_EMAIL . '>')) !== 250) return $fail();
-    $rcpt = $code($cmd('RCPT TO:<' . $to . '>'));
-    if ($rcpt !== 250 && $rcpt !== 251) return $fail();
-    if ($code($cmd('DATA')) !== 354) return $fail();
+    $resp = $cmd('MAIL FROM:<' . FROM_EMAIL . '>');
+    if ($code($resp) !== 250) return $fail('MAIL FROM', $resp);
+    $resp = $cmd('RCPT TO:<' . $to . '>');
+    $rcpt = $code($resp);
+    if ($rcpt !== 250 && $rcpt !== 251) return $fail('RCPT TO', $resp);
+    $resp = $cmd('DATA');
+    if ($code($resp) !== 354) return $fail('DATA', $resp);
 
     $message = build_message($to, $subject, $lines, $replyTo);
     fwrite($fp, $message . "\r\n.\r\n");
