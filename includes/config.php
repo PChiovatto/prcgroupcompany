@@ -20,7 +20,7 @@ define('BUSINESS_STATE',  'MA');
 define('BUSINESS_ZIP',    '01880');
 define('BUSINESS_ADDRESS', BUSINESS_STREET . ', ' . BUSINESS_CITY . ', ' . BUSINESS_STATE . ' ' . BUSINESS_ZIP);
 define('BUSINESS_HOURS', 'Mon–Sat, 8AM–6PM');
-define('SITE_URL',       'https://www.prcgroupcompany.com');
+define('SITE_URL',       'https://prcgroupcompany.com');
 
 // --- Google -------------------------------------------------------------
 define('GA_MEASUREMENT_ID',  'G-Y43RH8X7K4');
