@@ -92,12 +92,12 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; color: var(--
 .logo__blob { fill: var(--logo-blob, #2b2b2b); }
 .logo__prc {
   fill: var(--logo-prc, #ffffff);
-  font-family: "Quicksand", var(--font-head); font-weight: 700;
+  font-family: var(--font-head); font-weight: 700;
   font-size: 39px; letter-spacing: 1px;
 }
 .logo__group {
   fill: var(--logo-group, #2b2b2b);
-  font-family: "Quicksand", var(--font-head); font-weight: 600;
+  font-family: var(--font-head); font-weight: 600;
   font-size: 16px; letter-spacing: 4px;
 }
 .brand__tag {
@@ -298,7 +298,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; color: var(--
 .footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 2.5rem; padding: 4rem 1.5rem 3rem; }
 .brand--footer .brand__text { color: #fff; }
 .footer__brand p { margin-top: 1rem; font-size: .92rem; color: #a0a0a0; max-width: 320px; }
-.footer__col h4 { color: #fff; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.1rem; }
+.footer__col h3 { color: #fff; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.1rem; }
 .footer__col a, .footer__col span { display: block; color: #a0a0a0; font-size: .92rem; margin-bottom: .6rem; }
 .footer__col a:hover { color: #fff; }
 .footer__bottom { border-top: 1px solid rgba(255,255,255,.08); }

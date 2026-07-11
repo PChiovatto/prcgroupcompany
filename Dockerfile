@@ -1,8 +1,8 @@
 # PRC Group — PHP + Apache image for Coolify / any Docker host
 FROM php:8.3-apache
 
-# Enable Apache modules used by .htaccess (rewrite + security headers)
-RUN a2enmod rewrite headers
+# Enable Apache modules used by .htaccess (rewrite, headers, gzip, caching)
+RUN a2enmod rewrite headers deflate expires
 
 # Allow .htaccess overrides in the web root
 RUN sed -ri 's!AllowOverride None!AllowOverride All!g' /etc/apache2/apache2.conf

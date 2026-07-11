@@ -1,0 +1,38 @@
+# PRC Group
+
+> Full-service painting, carpentry and home remodeling company based in
+> Wakefield, Massachusetts, serving the North Shore and Greater Boston
+> since 2017. Licensed & insured. Free written estimates.
+
+## Company Facts
+
+- Business: PRC Group — Painting · Carpentry · Remodeling
+- Address: 86 Albion St, Wakefield, MA 01880
+- Phone: (781) 520-8245
+- Email: info@prcgroupcompany.com
+- Website: https://www.prcgroupcompany.com
+- Founded: 2017
+- Hours: Mon–Sat, 8AM–6PM
+- Credentials: Licensed & insured; EPA lead-safe practices on pre-1978 homes;
+  written workmanship warranty on every project
+
+## Services
+
+- [Interior Painting](https://www.prcgroupcompany.com/interior-painting.php): walls, ceilings, trim and cabinet refinishing
+- [Exterior Painting](https://www.prcgroupcompany.com/exterior-painting.php): full-prep repaints, siding, decks and doors
+- [General Carpentry](https://www.prcgroupcompany.com/general-carpentry.php): decks, framing, structural repairs, doors, windows, siding
+- [Finish Carpentry](https://www.prcgroupcompany.com/finish-carpentry.php): crown molding, wainscoting, built-ins, custom trim
+- [Home Remodeling](https://www.prcgroupcompany.com/home-remodeling.php): kitchens, bathrooms and full-room renovations
+
+## Service Areas
+
+- [All service areas](https://www.prcgroupcompany.com/service-areas.php)
+- Cities with dedicated pages: Wakefield, Winchester, Lynnfield, Reading,
+  North Reading, Melrose, Stoneham, Lexington, Andover, Marblehead,
+  Swampscott, Woburn — pages follow the pattern
+  https://www.prcgroupcompany.com/painting-{city}-ma.php
+
+## Tools
+
+- [Instant Quote Calculator & Color Visualizer](https://www.prcgroupcompany.com/tools.php)
+- [Book a Free Consultation](https://www.prcgroupcompany.com/booking.php)

@@ -81,7 +81,7 @@ function nav_active($k, $cur) { return $k === $cur ? ' aria-current="page"' : ''
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="css/styles.css" />
@@ -107,7 +107,7 @@ function nav_active($k, $cur) { return $k === $cur ? ' aria-current="page"' : ''
 
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="index.php" class="brand" aria-label="<?= BUSINESS_NAME ?> — home">
+      <a href="index.php" class="brand">
         <svg class="logo" viewBox="0 0 168 120" role="img" aria-label="<?= BUSINESS_NAME ?> logo">
           <path class="logo__blob" d="M60 4 C28 4 3 28 3 60 C3 92 28 116 60 116 C80 116 92 109 97 99 C99 95 100 88 100 80 L100 30 C100 19 97 11 90 7 C85 4 78 3 69 3 Z"/>
           <text class="logo__prc" x="51" y="75" text-anchor="middle">PRC</text>
@@ -130,3 +130,5 @@ function nav_active($k, $cur) { return $k === $cur ? ' aria-current="page"' : ''
       </button>
     </div>
   </header>
+
+  <main id="main">

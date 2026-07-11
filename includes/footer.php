@@ -2,6 +2,8 @@
 require_once __DIR__ . '/config.php';
 $extraJS = $extraJS ?? [];
 ?>
+  </main>
+
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
@@ -16,7 +18,7 @@ $extraJS = $extraJS ?? [];
           Licensed, insured and committed to quality.</p>
       </div>
       <div class="footer__col">
-        <h4>Services</h4>
+        <h3>Services</h3>
         <a href="interior-painting.php">Interior Painting</a>
         <a href="exterior-painting.php">Exterior Painting</a>
         <a href="general-carpentry.php">General Carpentry</a>
@@ -24,7 +26,7 @@ $extraJS = $extraJS ?? [];
         <a href="home-remodeling.php">Home Remodeling</a>
       </div>
       <div class="footer__col">
-        <h4>Quick Links</h4>
+        <h3>Quick Links</h3>
         <a href="tools.php#calc-section">Quote Calculator</a>
         <a href="tools.php#visualizer">Color Visualizer</a>
         <a href="booking.php">Book Appointment</a>
@@ -33,7 +35,7 @@ $extraJS = $extraJS ?? [];
         <a href="<?= GOOGLE_REVIEW_URL ?>" target="_blank" rel="noopener">★ Review Us on Google</a>
       </div>
       <div class="footer__col">
-        <h4>Contact</h4>
+        <h3>Contact</h3>
         <a href="tel:<?= BUSINESS_PHONE_RAW ?>"><?= BUSINESS_PHONE ?></a>
         <a href="mailto:<?= BUSINESS_EMAIL ?>"><?= BUSINESS_EMAIL_PUBLIC ?></a>
         <a href="<?= GOOGLE_PROFILE_URL ?>" target="_blank" rel="noopener"><?= BUSINESS_ADDRESS ?></a>
