@@ -34,8 +34,7 @@
 }
 .opt:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: var(--shadow-sm); }
 .opt.sel { border-color: var(--amber); background: #f0f0f0; box-shadow: 0 0 0 3px rgba(0,0,0,.12); }
-.opt .ico { font-size: 1.7rem; display: block; margin-bottom: .4rem; }
-.opt small { display: block; font-weight: 500; color: var(--muted); font-size: .8rem; margin-top: .25rem; }
+.opt small { display: block; font-weight: 500; color: var(--muted); font-size: .8rem; margin-top: .3rem; line-height: 1.4; }
 
 .calc .field { margin-bottom: 1.1rem; }
 .calc label { display: block; font-family: var(--font-head); font-weight: 600; font-size: .85rem;
@@ -110,9 +109,10 @@
   clip-path: inset(0 50% 0 0); }
 .ba__handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background: #fff;
   transform: translateX(-2px); box-shadow: 0 0 10px rgba(0,0,0,.3); }
-.ba__grip { position: absolute; top: 50%; left: 50%; width: 42px; height: 42px; transform: translate(-50%,-50%);
-  background: #fff; border-radius: 50%; box-shadow: var(--shadow-md); display: grid; place-items: center;
-  color: var(--navy); font-weight: 800; cursor: ew-resize; }
+.ba__grip { position: absolute; top: 50%; left: 50%; min-width: 52px; height: 30px; padding: 0 .5rem;
+  transform: translate(-50%,-50%); background: #fff; border-radius: 50px; box-shadow: var(--shadow-md);
+  display: grid; place-items: center; color: var(--navy); font-family: var(--font-head); font-weight: 700;
+  font-size: .62rem; letter-spacing: .12em; cursor: ew-resize; }
 .ba__tag { position: absolute; top: 12px; padding: .25rem .7rem; border-radius: 50px; font-size: .75rem;
   font-weight: 700; font-family: var(--font-head); color: #fff; background: rgba(0,0,0,.45); }
 .ba__tag--b { left: 12px; } .ba__tag--a { right: 12px; }

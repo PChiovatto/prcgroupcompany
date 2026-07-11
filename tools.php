@@ -43,11 +43,11 @@ include __DIR__ . '/includes/header.php';
             <h3>What do you need done?</h3>
             <p class="hint">Pick the service that best fits your project.</p>
             <div class="opt-grid">
-              <div class="opt" data-service="interior"><span class="ico">🎨</span>Interior Painting</div>
-              <div class="opt" data-service="exterior"><span class="ico">🏠</span>Exterior Painting</div>
-              <div class="opt" data-service="carpentry"><span class="ico">🔨</span>General Carpentry</div>
-              <div class="opt" data-service="finish"><span class="ico">📐</span>Finish Carpentry</div>
-              <div class="opt" data-service="remodel"><span class="ico">🛠️</span>Home Remodeling</div>
+              <div class="opt" data-service="interior">Interior Painting<small>Walls, ceilings, trim &amp; cabinets</small></div>
+              <div class="opt" data-service="exterior">Exterior Painting<small>Siding, decks, doors &amp; trim</small></div>
+              <div class="opt" data-service="carpentry">General Carpentry<small>Decks, repairs &amp; structural work</small></div>
+              <div class="opt" data-service="finish">Finish Carpentry<small>Crown molding, trim &amp; built-ins</small></div>
+              <div class="opt" data-service="remodel">Home Remodeling<small>Kitchens, baths &amp; full rooms</small></div>
             </div>
           </div>
 
@@ -61,11 +61,11 @@ include __DIR__ . '/includes/header.php';
             <h3>Choose a finish level</h3>
             <p class="hint">Higher levels mean more prep and premium materials.</p>
             <div class="opt-grid">
-              <div class="opt sel" data-finish="standard"><span class="ico">●</span>Standard
+              <div class="opt sel" data-finish="standard">Standard
                 <small>Quality materials, clean finish</small></div>
-              <div class="opt" data-finish="premium"><span class="ico">●●</span>Premium
+              <div class="opt" data-finish="premium">Premium
                 <small>Premium paints, extra prep</small></div>
-              <div class="opt" data-finish="luxury"><span class="ico">●●●</span>Luxury
+              <div class="opt" data-finish="luxury">Luxury
                 <small>Top-tier finishes, custom detail</small></div>
             </div>
           </div>
@@ -153,7 +153,7 @@ include __DIR__ . '/includes/header.php';
           <div class="ba__img ba__before" id="baBefore">BEFORE</div>
           <span class="ba__tag ba__tag--b">Before</span>
           <span class="ba__tag ba__tag--a">After</span>
-          <div class="ba__handle" id="baHandle"><div class="ba__grip">⇆</div></div>
+          <div class="ba__handle" id="baHandle"><div class="ba__grip">DRAG</div></div>
         </div>
         <input type="range" id="baRange" min="0" max="100" value="50" aria-label="Before and after slider" />
       </div>
@@ -166,7 +166,7 @@ include __DIR__ . '/includes/header.php';
         <h2>Prefer to talk it through?</h2>
         <p>Call us for a free, no-obligation on-site estimate.</p>
       </div>
-      <a href="tel:<?= BUSINESS_PHONE_RAW ?>" class="btn btn--light">📞 Call <?= BUSINESS_PHONE ?></a>
+      <a href="tel:<?= BUSINESS_PHONE_RAW ?>" class="btn btn--light">Call <?= BUSINESS_PHONE ?></a>
     </div>
   </section>
 

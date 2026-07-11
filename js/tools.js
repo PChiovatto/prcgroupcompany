@@ -6,11 +6,11 @@
      1) QUOTE CALCULATOR
      ===================================================== */
   var SERVICES = {
-    interior:  { label: "Interior Painting", icon: "🎨", unit: "rooms",     base: 450,  min: 1, max: 20, step: 1, suffix: "room(s)" },
-    exterior:  { label: "Exterior Painting", icon: "🏠", unit: "homesize",  base: 0 },
-    carpentry: { label: "General Carpentry", icon: "🔨", unit: "scale",     base: 0 },
-    finish:    { label: "Finish Carpentry",  icon: "📐", unit: "linft",     base: 14,   min: 10, max: 400, step: 5, suffix: "linear ft" },
-    remodel:   { label: "Home Remodeling",   icon: "🛠️", unit: "remodel",   base: 0 }
+    interior:  { label: "Interior Painting", unit: "rooms",     base: 450,  min: 1, max: 20, step: 1, suffix: "room(s)" },
+    exterior:  { label: "Exterior Painting", unit: "homesize",  base: 0 },
+    carpentry: { label: "General Carpentry", unit: "scale",     base: 0 },
+    finish:    { label: "Finish Carpentry",  unit: "linft",     base: 14,   min: 10, max: 400, step: 5, suffix: "linear ft" },
+    remodel:   { label: "Home Remodeling",   unit: "remodel",   base: 0 }
   };
   var HOMESIZE = { small: { label: "Small (≤1,500 sq ft)", v: 3200 }, medium: { label: "Medium (1,500–2,800)", v: 5800 }, large: { label: "Large (2,800+ sq ft)", v: 9500 } };
   var SCALE    = { small: { label: "Small repair / 1 day", v: 850 }, medium: { label: "Medium project", v: 2800 }, large: { label: "Large / multi-day", v: 6500 } };
@@ -26,13 +26,26 @@
     var backBtn = calc.querySelector("#calcBack");
     var nextBtn = calc.querySelector("#calcNext");
 
+    // Steps where the user picks a box (service, size options, finish) advance
+    // on click — no Continue button needed there.
+    function isBoxStep() {
+      if (step === 0 || step === 2) return true;
+      if (step === 1) { var s = SERVICES[state.service]; return s && !(s.unit === "rooms" || s.unit === "linft"); }
+      return false;
+    }
+    function goNext() { if (canAdvance()) { step++; show(); } }
+
     function show() {
       steps.forEach(function (s, i) { s.classList.toggle("active", i === step); });
       bars.forEach(function (b, i) {
         b.classList.toggle("active", i === step);
         b.classList.toggle("done", i < step);
       });
+      var boxStep = isBoxStep();
       backBtn.classList.toggle("is-hidden", step === 0);
+      nextBtn.classList.toggle("is-hidden", boxStep);
+      var navEl = calc.querySelector(".calc__nav");
+      if (navEl) navEl.style.display = (boxStep && step === 0) ? "none" : "flex";
       nextBtn.textContent = step === steps.length - 2 ? "See my estimate" : (step === steps.length - 1 ? "Send request" : "Continue");
       if (step === steps.length - 1) buildResult();
     }
@@ -44,6 +57,7 @@
         el.classList.add("sel");
         state.service = el.getAttribute("data-service");
         renderDetail();
+        setTimeout(goNext, 140);
       });
     });
 
@@ -87,6 +101,7 @@
           detail.querySelectorAll("[data-size]").forEach(function (o) { o.classList.remove("sel"); });
           el.classList.add("sel");
           state.sizeKey = el.getAttribute("data-size");
+          setTimeout(goNext, 140);
         });
       });
     }
@@ -97,6 +112,7 @@
         calc.querySelectorAll("[data-finish]").forEach(function (o) { o.classList.remove("sel"); });
         el.classList.add("sel");
         state.finish = el.getAttribute("data-finish");
+        setTimeout(goNext, 140);
       });
     });
 
