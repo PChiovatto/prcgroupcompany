@@ -204,33 +204,123 @@
   /* =====================================================
      2) COLOR VISUALIZER
      ===================================================== */
+  // Real Benjamin Moore colors (name, code, approximate hex, family).
+  // Swatches are rendered from the hex; the code deep-links to benjaminmoore.com.
   var COLORS = [
-    ["Cloud White", "#eef0ef"], ["Warm Linen", "#e7ddc9"], ["Soft Sand", "#d8c4a3"],
-    ["Sage", "#9fae93"], ["Eucalyptus", "#7c9a8e"], ["Ocean Teal", "#3f7d83"],
-    ["Slate Blue", "#5b7390"], ["Navy", "#26405c"], ["Amber", "#d9912f"],
-    ["Terracotta", "#b5654a"], ["Charcoal", "#3a3d40"], ["Greige", "#c7bfb2"]
+    { name: "White Dove",       code: "OC-17",   hex: "#f0efe4", fam: "Soft white" },
+    { name: "Chantilly Lace",   code: "OC-65",   hex: "#f7f8f2", fam: "Crisp white" },
+    { name: "Simply White",     code: "OC-117",  hex: "#f4f0e1", fam: "Warm white" },
+    { name: "Swiss Coffee",     code: "OC-45",   hex: "#eae4d6", fam: "Creamy white" },
+    { name: "Cloud White",      code: "OC-130",  hex: "#f1ecdf", fam: "Soft white" },
+    { name: "Revere Pewter",    code: "HC-172",  hex: "#cbc3b3", fam: "Warm greige" },
+    { name: "Edgecomb Gray",    code: "HC-173",  hex: "#d5cdbd", fam: "Light greige" },
+    { name: "Balboa Mist",      code: "OC-27",   hex: "#d6d0c5", fam: "Soft greige" },
+    { name: "Classic Gray",     code: "OC-23",   hex: "#dcd8cd", fam: "Warm gray" },
+    { name: "Manchester Tan",   code: "HC-81",   hex: "#d7c8ab", fam: "Warm tan" },
+    { name: "Stonington Gray",  code: "HC-170",  hex: "#c0c4c1", fam: "Cool gray" },
+    { name: "Gray Owl",         code: "OC-52",   hex: "#cdcec4", fam: "Light gray" },
+    { name: "Coventry Gray",    code: "HC-169",  hex: "#a8a89d", fam: "Mid gray" },
+    { name: "Chelsea Gray",     code: "HC-168",  hex: "#787169", fam: "Deep gray" },
+    { name: "October Mist",     code: "1495",    hex: "#a3a891", fam: "Sage green" },
+    { name: "Guilford Green",   code: "HC-116",  hex: "#a7ab8d", fam: "Soft green" },
+    { name: "Saybrook Sage",    code: "HC-114",  hex: "#93a084", fam: "Muted green" },
+    { name: "Hunter Green",     code: "2041-10", hex: "#38473c", fam: "Deep green" },
+    { name: "Palladian Blue",   code: "HC-144",  hex: "#b7cdc4", fam: "Soft blue-green" },
+    { name: "Wythe Blue",       code: "HC-143",  hex: "#a7bdb0", fam: "Vintage blue" },
+    { name: "Aegean Teal",      code: "2136-40", hex: "#6d7f76", fam: "Teal" },
+    { name: "Hale Navy",        code: "HC-154",  hex: "#434b52", fam: "Navy" },
+    { name: "Newburyport Blue", code: "HC-155",  hex: "#33414e", fam: "Deep blue" },
+    { name: "First Light",      code: "2102-70", hex: "#f0ddd7", fam: "Soft pink" },
+    { name: "Caliente",         code: "AF-290",  hex: "#a3352f", fam: "Bold red" },
+    { name: "Gentleman's Gray", code: "2062-20", hex: "#2d3b42", fam: "Blue-black" }
   ];
+
+  function bmUrl(c) {
+    var codeSlug = c.code.toLowerCase().replace(/\s+/g, "-");
+    var nameSlug = c.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    return "https://www.benjaminmoore.com/en-us/paint-colors/color/" + codeSlug + "/" + nameSlug;
+  }
+
   var wall = document.getElementById("vizWall");
   var swatches = document.getElementById("vizSwatches");
   var current = document.getElementById("vizCurrent");
+  var search = document.getElementById("vizSearch");
+  var bmLink = document.getElementById("vizBmLink");
+  var photo = document.getElementById("vizPhoto");
+  var tint = document.getElementById("vizTint");
+  var fileInput = document.getElementById("vizFile");
+  var opacity = document.getElementById("vizOpacity");
+  var removeBtn = document.getElementById("vizRemove");
+  var intensity = document.getElementById("vizIntensity");
+  var room = document.getElementById("vizRoom");
+  var uploadLabel = document.getElementById("vizUploadLabel");
+
   if (wall && swatches) {
-    COLORS.forEach(function (c, i) {
-      var sw = document.createElement("div");
-      sw.className = "swatch" + (i === 0 ? " sel" : "");
-      sw.style.background = c[1];
-      sw.title = c[0];
-      sw.setAttribute("role", "button");
-      sw.setAttribute("aria-label", c[0]);
-      sw.addEventListener("click", function () {
-        swatches.querySelectorAll(".swatch").forEach(function (s) { s.classList.remove("sel"); });
-        sw.classList.add("sel");
-        wall.style.background = c[1];
-        if (current) current.innerHTML = c[0] + "<small>" + c[1].toUpperCase() + "</small>";
+    var selected = COLORS[0];
+
+    function applyColor(c) {
+      selected = c;
+      wall.style.background = c.hex;
+      if (tint) tint.style.background = c.hex;
+      if (current) current.innerHTML = c.name + " <em>" + c.code + "</em><small>" +
+        c.fam + " · " + c.hex.toUpperCase() + "</small>";
+      if (bmLink) bmLink.href = bmUrl(c);
+    }
+
+    function renderSwatches(filter) {
+      swatches.innerHTML = "";
+      var q = (filter || "").trim().toLowerCase();
+      var list = COLORS.filter(function (c) {
+        return !q || (c.name + " " + c.code + " " + c.fam).toLowerCase().indexOf(q) > -1;
       });
-      swatches.appendChild(sw);
+      if (!list.length) {
+        swatches.innerHTML = '<p class="viz__empty">No colors match. Try another name or code.</p>';
+        return;
+      }
+      list.forEach(function (c) {
+        var sw = document.createElement("button");
+        sw.type = "button";
+        sw.className = "swatch" + (c === selected ? " sel" : "");
+        sw.style.background = c.hex;
+        sw.title = c.name + " " + c.code;
+        sw.setAttribute("aria-label", c.name + " " + c.code);
+        sw.addEventListener("click", function () {
+          swatches.querySelectorAll(".swatch").forEach(function (s) { s.classList.remove("sel"); });
+          sw.classList.add("sel");
+          applyColor(c);
+        });
+        swatches.appendChild(sw);
+      });
+    }
+
+    renderSwatches("");
+    applyColor(COLORS[0]);
+    if (search) search.addEventListener("input", function () { renderSwatches(search.value); });
+
+    /* Upload a room photo and apply the selected color over it */
+    if (fileInput) {
+      fileInput.addEventListener("change", function () {
+        var f = fileInput.files && fileInput.files[0];
+        if (!f) return;
+        photo.src = URL.createObjectURL(f);
+        photo.hidden = false;
+        if (tint) { tint.hidden = false; tint.style.opacity = (opacity ? opacity.value / 100 : 0.55); }
+        if (room) room.hidden = true;
+        if (intensity) intensity.hidden = false;
+        if (uploadLabel) uploadLabel.textContent = "Choose a different photo";
+      });
+    }
+    if (opacity) opacity.addEventListener("input", function () {
+      if (tint) tint.style.opacity = opacity.value / 100;
     });
-    wall.style.background = COLORS[0][1];
-    if (current) current.innerHTML = COLORS[0][0] + "<small>" + COLORS[0][1].toUpperCase() + "</small>";
+    if (removeBtn) removeBtn.addEventListener("click", function () {
+      photo.hidden = true;
+      if (tint) tint.hidden = true;
+      if (room) room.hidden = false;
+      if (intensity) intensity.hidden = true;
+      if (fileInput) fileInput.value = "";
+      if (uploadLabel) uploadLabel.textContent = "Upload a photo of your room";
+    });
   }
 
   /* =====================================================

@@ -120,19 +120,41 @@ include __DIR__ . '/includes/header.php';
       <div class="section__head">
         <span class="section__eyebrow">Color Visualizer</span>
         <h2>Preview your wall color</h2>
-        <p>Tap a color to see it on a sample room. Great for narrowing down before we paint.</p>
+        <p>Browse real Benjamin Moore colors, then upload a photo of your own room and
+          apply the shade you picked. Great for narrowing down before we paint.</p>
       </div>
       <div class="viz">
-        <div class="viz__room">
-          <div class="viz__wall" id="vizWall">
-            <div class="viz__frame"></div>
-            <div class="viz__sofa"></div>
+        <div class="viz__preview">
+          <div class="viz__stage" id="vizStage">
+            <div class="viz__room" id="vizRoom">
+              <div class="viz__wall" id="vizWall">
+                <div class="viz__frame"></div>
+                <div class="viz__sofa"></div>
+              </div>
+              <div class="viz__floor"></div>
+            </div>
+            <img id="vizPhoto" class="viz__photo" alt="Your uploaded room" hidden />
+            <div id="vizTint" class="viz__tint" hidden></div>
           </div>
-          <div class="viz__floor"></div>
+          <div class="viz__controls">
+            <label class="viz__upload">
+              <input type="file" id="vizFile" accept="image/*" hidden />
+              <span id="vizUploadLabel">Upload a photo of your room</span>
+            </label>
+            <div class="viz__intensity" id="vizIntensity" hidden>
+              <label for="vizOpacity">Color intensity</label>
+              <input type="range" id="vizOpacity" min="20" max="90" value="55" />
+              <button type="button" id="vizRemove" class="btn btn--back">Remove photo</button>
+            </div>
+            <p class="viz__note">On-screen preview only — actual paint colors vary with light and
+              surface. We bring physical samples to every estimate.</p>
+          </div>
         </div>
         <div class="viz__panel">
           <h3>Choose a shade</h3>
-          <div class="viz__current" id="vizCurrent">Cloud White<small>#EEF0EF</small></div>
+          <input type="search" id="vizSearch" class="viz__search" placeholder="Search by name or code (e.g. Hale Navy, HC-172)…" aria-label="Search Benjamin Moore colors" />
+          <div class="viz__current" id="vizCurrent"></div>
+          <a id="vizBmLink" class="viz__bmlink" href="#" target="_blank" rel="noopener">View on Benjamin Moore →</a>
           <div class="swatches" id="vizSwatches"></div>
         </div>
       </div>
