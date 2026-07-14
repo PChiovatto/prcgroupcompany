@@ -1,0 +1,50 @@
+[
+  {
+    "file": "social-1080x1080-remodel",
+    "w": 1080,
+    "h": 1080,
+    "kind": "social"
+  },
+  {
+    "file": "social-1080x1350-bathroom",
+    "w": 1080,
+    "h": 1350,
+    "kind": "social"
+  },
+  {
+    "file": "social-1080x1920-painting",
+    "w": 1080,
+    "h": 1920,
+    "kind": "social"
+  },
+  {
+    "file": "social-1200x628-exterior",
+    "w": 1200,
+    "h": 628,
+    "kind": "social"
+  },
+  {
+    "file": "social-1080x1350-carpentry",
+    "w": 1080,
+    "h": 1350,
+    "kind": "social"
+  },
+  {
+    "file": "google-300x250-remodel",
+    "w": 300,
+    "h": 250,
+    "kind": "banner"
+  },
+  {
+    "file": "google-300x600-painting",
+    "w": 300,
+    "h": 600,
+    "kind": "banner"
+  },
+  {
+    "file": "google-728x90-exterior",
+    "w": 728,
+    "h": 90,
+    "kind": "banner"
+  }
+]
