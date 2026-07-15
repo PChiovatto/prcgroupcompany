@@ -30,6 +30,7 @@ define('GOOGLE_REVIEW_URL',  'https://g.page/r/Cej4IYrzsxhnEAI/review');
 
 // --- Social -------------------------------------------------------------
 define('INSTAGRAM_URL', 'https://www.instagram.com/prc_group_inc');
+define('FACEBOOK_URL',  'https://facebook.com/prcgroupinc');
 
 // Where lead/booking emails are actually delivered (kept private, not shown on the site).
 define('BUSINESS_EMAIL', 'prcgrouinc@gmail.com');
