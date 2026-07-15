@@ -10,7 +10,7 @@ include __DIR__ . '/includes/header.php';
     <div class="hero__overlay"></div>
     <div class="container hero__content">
       <span class="hero__eyebrow">Licensed &amp; Insured · 5★ Rated</span>
-      <h1>Painting, Carpentry &amp;<br />Home Remodeling Done Right</h1>
+      <h1>Painting, Carpentry &amp; Home Remodeling<br />in <?= BUSINESS_AREA ?></h1>
       <p>From a single accent wall to a full home renovation — <?= BUSINESS_NAME ?> brings craftsmanship,
         clean work and on-time delivery to every project across <?= BUSINESS_AREA ?>.</p>
       <div class="hero__actions">
