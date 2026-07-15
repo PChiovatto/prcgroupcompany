@@ -40,8 +40,8 @@ include __DIR__ . '/includes/header.php';
         <h2>What we take on</h2>
       </div>
       <ul class="xlist">
-        <li>Kitchen remodels — cabinets, counters, tile, lighting</li>
-        <li>Bathroom renovations — full gut or refresh</li>
+        <li><a href="kitchen-remodeling.php">Kitchen remodels</a> — cabinets, counters, tile, lighting</li>
+        <li><a href="bathroom-remodeling.php">Bathroom renovations</a> — full gut or refresh</li>
         <li>Basement finishing and home offices</li>
         <li>Mudrooms, laundry rooms and built-in storage</li>
         <li>Open-concept wall removals (engineered &amp; permitted)</li>
@@ -136,6 +136,8 @@ include __DIR__ . '/includes/header.php';
     <div class="container" style="text-align:center;">
       <span class="section__eyebrow">Explore More</span>
       <div class="svc-other">
+        <a href="kitchen-remodeling.php">Kitchen Remodeling</a>
+        <a href="bathroom-remodeling.php">Bathroom Remodeling</a>
         <a href="interior-painting.php">Interior Painting</a>
         <a href="exterior-painting.php">Exterior Painting</a>
         <a href="general-carpentry.php">General Carpentry</a>

@@ -34,7 +34,8 @@ foreach ($files as $f) {
     if (preg_match('/^painting-.+-ma\.php$/', $base)) {
         $freq = 'monthly'; $prio = '0.8';           // city pages
     } elseif (in_array($base, ['interior-painting.php', 'exterior-painting.php',
-        'general-carpentry.php', 'finish-carpentry.php', 'home-remodeling.php'], true)) {
+        'general-carpentry.php', 'finish-carpentry.php', 'home-remodeling.php',
+        'kitchen-remodeling.php', 'bathroom-remodeling.php'], true)) {
         $freq = 'monthly'; $prio = '0.9';           // service pages
     } elseif (in_array($base, ['tools.php', 'booking.php'], true)) {
         $freq = 'monthly'; $prio = '0.8';

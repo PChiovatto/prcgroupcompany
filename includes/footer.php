@@ -24,6 +24,8 @@ $extraJS = $extraJS ?? [];
         <a href="general-carpentry.php">General Carpentry</a>
         <a href="finish-carpentry.php">Finish Carpentry</a>
         <a href="home-remodeling.php">Home Remodeling</a>
+        <a href="kitchen-remodeling.php">Kitchen Remodeling</a>
+        <a href="bathroom-remodeling.php">Bathroom Remodeling</a>
       </div>
       <div class="footer__col">
         <h3>Quick Links</h3>
