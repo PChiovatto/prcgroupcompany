@@ -39,6 +39,7 @@ $extraJS = $extraJS ?? [];
         <a href="tel:<?= BUSINESS_PHONE_RAW ?>"><?= BUSINESS_PHONE ?></a>
         <a href="mailto:<?= BUSINESS_EMAIL ?>"><?= BUSINESS_EMAIL_PUBLIC ?></a>
         <a href="<?= GOOGLE_PROFILE_URL ?>" target="_blank" rel="noopener"><?= BUSINESS_ADDRESS ?></a>
+        <a href="<?= INSTAGRAM_URL ?>" target="_blank" rel="noopener">Instagram @prc_group_inc</a>
         <span>Serving all of <?= BUSINESS_AREA ?></span>
         <span><?= BUSINESS_HOURS ?></span>
       </div>

@@ -28,6 +28,9 @@ define('CLARITY_PROJECT_ID', 'xh7j23a8m5');
 define('GOOGLE_PROFILE_URL', 'https://g.page/r/Cej4IYrzsxhnEAI');
 define('GOOGLE_REVIEW_URL',  'https://g.page/r/Cej4IYrzsxhnEAI/review');
 
+// --- Social -------------------------------------------------------------
+define('INSTAGRAM_URL', 'https://www.instagram.com/prc_group_inc');
+
 // Where lead/booking emails are actually delivered (kept private, not shown on the site).
 define('BUSINESS_EMAIL', 'prcgrouinc@gmail.com');
 
