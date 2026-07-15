@@ -118,8 +118,8 @@ function nav_active($k, $cur) { return $k === $cur ? ' aria-current="page"' : ''
 
       <nav class="nav" id="nav">
         <a href="index.php#services"<?= nav_active('services', $active) ?>>Services</a>
-        <a href="index.php#about"<?= nav_active('about', $active) ?>>About</a>
-        <a href="index.php#projects"<?= nav_active('projects', $active) ?>>Projects</a>
+        <a href="about.php"<?= nav_active('about', $active) ?>>About</a>
+        <a href="portfolio.php"<?= nav_active('projects', $active) ?>>Portfolio</a>
         <a href="tools.php"<?= nav_active('tools', $active) ?>>Tools</a>
         <a href="booking.php"<?= nav_active('booking', $active) ?>>Book</a>
         <a href="index.php#contact" class="nav__cta">Get a Quote</a>
