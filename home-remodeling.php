@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/includes/config.php';
-$pageTitle = 'Home Remodeling in ' . BUSINESS_AREA . ' | Kitchens & Bathrooms | ' . BUSINESS_NAME;
+$pageTitle = 'Home Remodeling in ' . BUSINESS_AREA . ' | ' . BUSINESS_NAME;
 $pageDesc  = 'Kitchen, bathroom and full-room remodeling across ' . BUSINESS_AREA . ' — one accountable team from design help and demo to carpentry, paint and final walkthrough.';
 $canonical = SITE_URL . '/home-remodeling.php';
 $active    = 'services';

@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/includes/config.php';
 $pageTitle = 'Portfolio | ' . BUSINESS_NAME . ' Projects in ' . BUSINESS_AREA;
-$pageDesc  = 'A look at recent painting, carpentry and remodeling projects by ' . BUSINESS_NAME . ' across ' . BUSINESS_AREA . ' — interior and exterior painting, decks, custom trim, kitchens and bathrooms.';
+$pageDesc  = 'Recent painting, carpentry and remodeling projects by ' . BUSINESS_NAME . ' across ' . BUSINESS_AREA . ' — decks, custom trim, kitchens and bathrooms.';
 $canonical = SITE_URL . '/portfolio.php';
 $active    = 'projects';
 $extraCSS  = ['css/service.css'];

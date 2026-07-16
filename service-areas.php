@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/city-data.php';
-$pageTitle = 'Service Areas | Painting & Remodeling North of Boston | ' . BUSINESS_NAME;
-$pageDesc  = BUSINESS_NAME . ' serves Wakefield and the communities north of Boston with painting, carpentry and home remodeling — Winchester, Lynnfield, Reading, Melrose, Lexington, Andover, Marblehead and more.';
+$pageTitle = 'Service Areas | North Shore, MA | ' . BUSINESS_NAME;
+$pageDesc  = BUSINESS_NAME . ' serves Wakefield, Winchester, Lynnfield, Reading, Melrose, Lexington, Andover and more with painting, carpentry and remodeling.';
 $canonical = SITE_URL . '/service-areas.php';
 $active    = 'services';
 $extraCSS  = ['css/service.css', 'css/city.css'];

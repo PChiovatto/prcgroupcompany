@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
-$pageTitle = $pageTitle ?? (BUSINESS_NAME . ' | Painting, Carpentry & Home Remodeling in ' . BUSINESS_AREA);
-$pageDesc  = $pageDesc  ?? 'PRC Group delivers professional interior & exterior painting, general & finish carpentry, and full home remodeling across ' . BUSINESS_AREA . '. Licensed, insured & free estimates.';
+$pageTitle = $pageTitle ?? ('Painting, Carpentry & Remodeling in ' . BUSINESS_AREA . ' | ' . BUSINESS_NAME);
+$pageDesc  = $pageDesc  ?? 'Interior & exterior painting, carpentry and home remodeling across ' . BUSINESS_AREA . '. Licensed, insured, free written estimates from ' . BUSINESS_NAME . '.';
 $canonical = $canonical ?? SITE_URL . '/';
 $extraCSS  = $extraCSS  ?? [];
 $active    = $active    ?? '';

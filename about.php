@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/includes/config.php';
-$pageTitle = 'About ' . BUSINESS_NAME . ' | Painting, Carpentry & Remodeling in ' . BUSINESS_AREA;
+$pageTitle = 'About ' . BUSINESS_NAME . ' | ' . BUSINESS_AREA . ' Painting & Remodeling';
 $pageDesc  = 'About ' . BUSINESS_NAME . ' — a Wakefield-based painting, carpentry and home remodeling company serving ' . BUSINESS_AREA . ' since ' . BUSINESS_FOUNDED . '. Licensed, insured, free written estimates.';
 $canonical = SITE_URL . '/about.php';
 $active    = 'about';
