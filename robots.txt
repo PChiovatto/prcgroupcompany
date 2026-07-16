@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://prcgroupcompany.com/sitemap.xml
+Sitemap: https://prcgroupcompany.com/sitemap.php
