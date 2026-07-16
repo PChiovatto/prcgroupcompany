@@ -145,6 +145,7 @@
     fd.append("name", name);
     fd.append("phone", phone);
     fd.append("email", email);
+    fd.append("address", (document.getElementById("baddress") || {}).value || "");
     fd.append("message", details.notes);
 
     fetch("api/send.php", { method: "POST", body: fd })

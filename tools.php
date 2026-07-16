@@ -88,8 +88,12 @@ include __DIR__ . '/includes/header.php';
               </div>
             </div>
             <div class="field">
+              <label for="caddress">Project address</label>
+              <input type="text" id="caddress" name="address" placeholder="Street, City — e.g. 12 Main St, Wakefield" autocomplete="street-address" />
+            </div>
+            <div class="field">
               <label for="cmsg">Anything else? (optional)</label>
-              <textarea id="cmsg" name="message" rows="3" placeholder="Timeline, address, details…"></textarea>
+              <textarea id="cmsg" name="message" rows="3" placeholder="Timeline, details…"></textarea>
             </div>
           </div>
 

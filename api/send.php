@@ -29,6 +29,7 @@ $type    = $_POST['form']    ?? 'contact';
 $name    = trim($_POST['name']    ?? '');
 $phone   = trim($_POST['phone']   ?? '');
 $email   = trim($_POST['email']   ?? '');
+$address = trim($_POST['address'] ?? '');
 $service = trim($_POST['service'] ?? '');
 $message = trim($_POST['message'] ?? '');
 
@@ -57,6 +58,7 @@ if ($type === 'quote') {
         'Name:      ' . $name,
         'Phone:     ' . $phone,
         'Email:     ' . ($email ?: '—'),
+        'Address:   ' . ($address ?: '—'),
         'Notes:     ' . ($message ?: '—'),
     ];
 } elseif ($type === 'booking') {
@@ -77,6 +79,7 @@ if ($type === 'quote') {
         'Name:     ' . $name,
         'Phone:    ' . $phone,
         'Email:    ' . ($email ?: '—'),
+        'Address:  ' . ($address ?: '—'),
         'Notes:    ' . ($message ?: '—'),
     ];
 } else {
@@ -89,6 +92,7 @@ if ($type === 'quote') {
         'Name:     ' . $name,
         'Phone:    ' . $phone,
         'Email:    ' . ($email ?: '—'),
+        'Address:  ' . ($address ?: '—'),
         'Message:  ' . ($message ?: '—'),
     ];
 }

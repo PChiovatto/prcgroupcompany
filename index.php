@@ -257,6 +257,10 @@ include __DIR__ . '/includes/header.php';
           </div>
         </div>
         <div class="field">
+          <label for="address">Project address</label>
+          <input type="text" id="address" name="address" placeholder="Street, City — e.g. 12 Main St, Wakefield" autocomplete="street-address" />
+        </div>
+        <div class="field">
           <label for="service">Service needed</label>
           <select id="service" name="service">
             <option value="">Select a service…</option>

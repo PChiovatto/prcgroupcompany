@@ -76,8 +76,12 @@ include __DIR__ . '/includes/header.php';
                 </div>
               </div>
               <div class="field">
+                <label for="baddress">Project address</label>
+                <input type="text" id="baddress" name="address" placeholder="Street, City — e.g. 12 Main St, Wakefield" autocomplete="street-address" />
+              </div>
+              <div class="field">
                 <label for="bnotes">Notes (optional)</label>
-                <textarea id="bnotes" name="notes" rows="2" placeholder="Address, project details…"></textarea>
+                <textarea id="bnotes" name="notes" rows="2" placeholder="Project details…"></textarea>
               </div>
               <button type="submit" class="btn btn--primary btn--full">Confirm booking</button>
               <p class="bnote" id="bookNote"></p>
